@@ -5,7 +5,7 @@ export class Questionnaire extends React.Component {
   public render() {
     return (
       <div>
-        <h2>How often?</h2>
+        <h4>How often?</h4>
         <TextField
           id="number"
           label="How often?"
