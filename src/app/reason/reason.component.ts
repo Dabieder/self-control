@@ -22,7 +22,7 @@ export class ReasonComponent implements OnInit {
     },
     {
       "name": "Sleeping",
-      "icon": "tv"
+      "icon": "local_hotel"
     }
   ]
 
