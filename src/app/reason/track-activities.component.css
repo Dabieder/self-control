@@ -1,0 +1,24 @@
+.round-icon{
+    display:inline-block;
+    border: 1px solid #aaaaaa;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.activity-button{
+    width: 50px;
+}
+
+.activity-label{
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.activities {
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
