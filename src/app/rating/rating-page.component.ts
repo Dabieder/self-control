@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rating-page.component.css']
 })
 export class RatingPageComponent implements OnInit {
+  value = 50;
 
   constructor() { }
 

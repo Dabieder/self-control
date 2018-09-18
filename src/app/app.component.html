@@ -1,15 +1,35 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+<div class="content-wrapper">
+  <router-outlet></router-outlet>
+
+  <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Plan
+      </ng-template>
+      <div class="widget-tab">
+        <app-planning></app-planning>
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Monitor
+      </ng-template>
+      <div class="widget-tab">
+        <app-rating-page></app-rating-page>
+        <mat-divider></mat-divider>
+        <app-reason></app-reason>
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Reflect
+      </ng-template>
+      <div class="widget-tab">
+        <app-track-activities></app-track-activities>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>
-<ul>
-  <li>
-    <h2><a routerLink="/ratings">Activities</a></h2>
-  </li>
-  <li>
-    <h2><a routerLink="/activities">Reasons</a></h2>
-  </li>
-</ul>
-<router-outlet></router-outlet>

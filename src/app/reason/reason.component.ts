@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Renderer2 } from "@angular/core";
 
 @Component({
   selector: "app-reason",
@@ -13,24 +13,29 @@ export class ReasonComponent implements OnInit {
   ngOnInit() {
     this.activities = [
       {
-        name: "Sport",
-        icon: "rowing"
+        name: "Not in the mood",
+        icon: "face",
+        selected: true
       },
       {
-        name: "Gaming",
-        icon: "videogame_asset"
+        name: "Too difficult",
+        icon: "settings_input_antenna",
+        selected: false
       },
       {
-        name: "Movie",
-        icon: "tv"
+        name: "No time",
+        icon: "access_time",
+        selected: false
       },
       {
-        name: "Sleeping",
-        icon: "local_hotel"
+        name: "Work",
+        icon: "attach_money",
+        selected: false
       },
       {
-        name: "Eating",
-        icon: "local_hotel"
+        name: "Stress",
+        icon: "contact_support",
+        selected: false
       }
     ];
   }

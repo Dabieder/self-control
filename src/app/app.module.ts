@@ -9,6 +9,9 @@ import { RatingPageComponent } from "./rating/rating-page.component";
 import { TrackActivitiesComponent } from "./activities/track-activities.component";
 import { MaterialModule } from "./material.module";
 import { ReasonComponent } from './reason/reason.component';
+import { PlanningComponent } from './planning/planning.component';
+import "hammerjs";
+import { TrackingItemComponent } from './activity-item/tracking-item.component';
 
 const routes: Routes = [
   {
@@ -22,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, RatingPageComponent, TrackActivitiesComponent, ReasonComponent],
+  declarations: [AppComponent, RatingPageComponent, TrackActivitiesComponent, ReasonComponent, PlanningComponent, TrackingItemComponent],
   imports: [
     BrowserModule,
     MaterialModule,

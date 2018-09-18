@@ -1,9 +1,10 @@
-<h2>What did you do today?</h2>
+<span>What did you do today?</span>
 <div class="content-wrapper">
   <div class="activities">
     <div *ngFor="let activity of activities" class="activity-button">
-      <div>
+      <!-- <div>
         <button
+        [ngClass]="activity.selected ? 'success' : 'danger'"
         (click)="activityClick($event, activity)"
         mat-icon-button class="round-icon">
           <mat-icon>
@@ -13,7 +14,8 @@
       </div>
       <div class="activity-label">
       <span >{{activity.name}}</span>
-    </div>
+    </div> -->
+    <app-tracking-item [trackingItem]="activity"></app-tracking-item>
     </div>
   </div>
 </div>

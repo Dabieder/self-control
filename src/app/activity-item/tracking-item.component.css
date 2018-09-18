@@ -12,7 +12,7 @@
 
 .activity-label{
     text-align: center;
-    font-size: 0.7em;
+    font-size: 0.7rem;
 }
 
 .activities {
@@ -23,6 +23,6 @@
     justify-content: space-evenly;
 }
 
-.selected-activity{
+.selected {
     background-color: orange;
 }

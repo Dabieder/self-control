@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {MatTabsModule} from '@angular/material/tabs';
 import {
   MatGridListModule,
   MatCardModule,
@@ -40,6 +41,7 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatExpansionModule,
+    MatTabsModule,
     MatDatepickerModule
   ],
   exports: [
@@ -61,6 +63,7 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatExpansionModule,
+    MatTabsModule,
     MatDatepickerModule
   ]
 })

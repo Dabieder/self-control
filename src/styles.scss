@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  font-size: calc(1vw + 1vh + 0.5vmin);
+}
+
+.mat-slider{
+  width: 80%;
+}
+
+.mat-slider-thumb{
+  width: 30px !important;
+  height: 30px !important;
+  right: -15px !important;
+  bottom: -15px !important;
+}
