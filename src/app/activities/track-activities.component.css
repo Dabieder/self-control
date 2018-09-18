@@ -22,3 +22,7 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
+.selected-activity{
+    background-color: orange;
+}

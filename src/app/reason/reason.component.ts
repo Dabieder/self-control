@@ -1,14 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "app-track-activities",
-  templateUrl: "./track-activities.component.html",
-  styleUrls: ["./track-activities.component.css"]
+  selector: "app-reason",
+  templateUrl: "./reason.component.html",
+  styleUrls: ["./reason.component.css"]
 })
-export class TrackActivitiesComponent implements OnInit {
+export class ReasonComponent implements OnInit {
   public activities: any;
 
-  constructor() {}
+  constructor(private renderer: Renderer2) {}
 
   ngOnInit() {
     this.activities = [
@@ -33,5 +33,11 @@ export class TrackActivitiesComponent implements OnInit {
         icon: "local_hotel"
       }
     ];
+  }
+
+  activityClick(event: any, activity: any) {
+    console.log("Event: ", event);
+    console.log("Clicked on activity: ", activity);
+    this.renderer.addClass(event.srcElement, "selected-activity");
   }
 }

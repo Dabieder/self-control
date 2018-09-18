@@ -4,7 +4,7 @@
     <div *ngFor="let activity of activities" class="activity-button">
       <div>
         <button
-        (click)="activityClick(activity)"
+        (click)="activityClick($event, activity)"
         mat-icon-button class="round-icon">
           <mat-icon>
             {{activity.icon}}

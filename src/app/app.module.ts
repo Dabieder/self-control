@@ -6,12 +6,13 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { RatingPageComponent } from "./rating/rating-page.component";
-import { TrackActivitiesComponent } from "./reason/track-activities.component";
+import { TrackActivitiesComponent } from "./activities/track-activities.component";
 import { MaterialModule } from "./material.module";
+import { ReasonComponent } from './reason/reason.component';
 
 const routes: Routes = [
   {
-    path: "activities",
+    path: "ratings",
     component: RatingPageComponent
   },
   {
@@ -21,7 +22,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, RatingPageComponent, TrackActivitiesComponent],
+  declarations: [AppComponent, RatingPageComponent, TrackActivitiesComponent, ReasonComponent],
   imports: [
     BrowserModule,
     MaterialModule,
