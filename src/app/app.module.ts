@@ -19,6 +19,11 @@ import { ReflectionPageComponent } from './reflection-page/reflection-page.compo
 import { LearningGoalChartComponent } from './learning-goal-chart/learning-goal-chart.component';
 import { WeekdayComponent } from './planning/weekday.component';
 import { MonitorPageComponent } from './monitor-page/monitor-page.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
 
 const routes: Routes = [
   {
@@ -54,7 +59,10 @@ const routes: Routes = [
       enabled: environment.production
     }),
     RouterModule.forRoot(routes),
-    ChartsModule
+    ChartsModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([AppEffects])
   ],
 
   providers: [],

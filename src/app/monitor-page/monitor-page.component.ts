@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-monitor-page',
-  templateUrl: './monitor-page.component.html',
-  styleUrls: ['./monitor-page.component.scss']
+  selector: "app-monitor-page",
+  templateUrl: "./monitor-page.component.html",
+  styleUrls: ["./monitor-page.component.scss"]
 })
 export class MonitorPageComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  submitMonitor() {
+    console.log("Submitting Monitoring");
   }
-
 }

@@ -17,4 +17,8 @@ export class PlanningComponent implements OnInit {
   onTimeValueChange(event: any) {
     console.log("time value change event", event);
   }
+
+  submitPlan() {
+    console.log("Submitting Plan");
+  }
 }
