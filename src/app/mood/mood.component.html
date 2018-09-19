@@ -1,0 +1,8 @@
+<span>How do you feel today?</span>
+<div class="content-wrapper">
+  <div class="activities">
+    <div *ngFor="let mood of moods" class="activity-button">
+    <app-tracking-item [trackingItem]="mood"></app-tracking-item>
+    </div>
+  </div>
+</div>

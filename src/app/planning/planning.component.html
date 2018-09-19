@@ -1,44 +1,45 @@
 <div class="container">
   <div class="col-md-8 offset-md-2">
     <p>
-      How much time do you want to invest <b>today</b>?
-    </p>
-    <mat-form-field>
-      <input
-      type="number"
-      placeholder="Hours"
-      min="0"
-      max="24"
-      matInput>
-    </mat-form-field>
-    <mat-form-field>
-      <input
-      type="number"
-      placeholder="Minutes"
-      min="0"
-      max="60"
-      matInput>
-    </mat-form-field>
-  </div>
-  <div class="col-md-8 offset-md-2">
-    <p>
       How much time do you want to invest <b>this week</b>?
     </p>
     <mat-form-field>
-      <input
-      type="number"
-      placeholder="Hours"
-      min="0"
-      max="168"
-      matInput>
+      <input type="number" placeholder="Hours" min="0" max="168" matInput>
     </mat-form-field>
-    <mat-form-field>
-      <input
-      type="number"
-      placeholder="Minutes"
-      min="0"
-      max="60"
-      matInput>
-    </mat-form-field>
+
   </div>
+  <div class="col-md-8 offset-md-2">
+    <span>
+      How much time do you want to invest <b>each day</b>?
+    </span>
+
+    <div class="day-grid container">
+      <span class="day">Monday: </span>
+      <mat-form-field class="" >
+        <input type="number" placeholder="Hours" min="0" max="24" matInput>
+      </mat-form-field>
+
+      <span class="day">Tuesday: </span>
+      <mat-form-field>
+        <input type="number" placeholder="Hours" min="0" max="24" matInput>
+      </mat-form-field>
+
+      <span class="day">Wednesday: </span>
+      <mat-form-field>
+        <input type="number" placeholder="Hours" min="0" max="24" matInput>
+      </mat-form-field>
+
+      <span class="day">Thursday: </span>
+      <mat-form-field>
+        <input type="number" placeholder="Hours" min="0" max="24" matInput>
+      </mat-form-field>
+
+      <span class="day">Friday: </span>
+      <mat-form-field>
+        <input type="number" placeholder="Hours" min="0" max="24" matInput>
+      </mat-form-field>
+    </div>
+
+  </div>
+
 </div>

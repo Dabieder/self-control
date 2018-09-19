@@ -40,9 +40,4 @@ export class TrackActivitiesComponent implements OnInit {
     ];
   }
 
-  activityClick(event: any, activity: any) {
-    console.log("Event: ", event);
-    console.log("Clicked on activity: ", activity);
-    this.renderer.addClass(event.srcElement, "selected-activity");
-  }
 }

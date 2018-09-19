@@ -23,8 +23,8 @@ export class ReasonComponent implements OnInit {
         selected: false
       },
       {
-        name: "No time",
-        icon: "access_time",
+        name: "Social life",
+        icon: "group",
         selected: false
       },
       {

@@ -8,10 +8,12 @@ import { environment } from "../environments/environment";
 import { RatingPageComponent } from "./rating/rating-page.component";
 import { TrackActivitiesComponent } from "./activities/track-activities.component";
 import { MaterialModule } from "./material.module";
-import { ReasonComponent } from './reason/reason.component';
-import { PlanningComponent } from './planning/planning.component';
+import { ReasonComponent } from "./reason/reason.component";
+import { PlanningComponent } from "./planning/planning.component";
 import "hammerjs";
-import { TrackingItemComponent } from './activity-item/tracking-item.component';
+import { TrackingItemComponent } from "./activity-item/tracking-item.component";
+import { MoodComponent } from "./mood/mood.component";
+import { SrlChartComponent } from './srl-chart/srl-chart.component';
 
 const routes: Routes = [
   {
@@ -25,7 +27,16 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, RatingPageComponent, TrackActivitiesComponent, ReasonComponent, PlanningComponent, TrackingItemComponent],
+  declarations: [
+    AppComponent,
+    RatingPageComponent,
+    TrackActivitiesComponent,
+    ReasonComponent,
+    PlanningComponent,
+    TrackingItemComponent,
+    MoodComponent,
+    SrlChartComponent
+  ],
   imports: [
     BrowserModule,
     MaterialModule,
