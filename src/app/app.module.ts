@@ -13,17 +13,17 @@ import { PlanningComponent } from "./planning/planning.component";
 import "hammerjs";
 import { TrackingItemComponent } from "./activity-item/tracking-item.component";
 import { MoodComponent } from "./mood/mood.component";
-import { SrlChartComponent } from './srl-chart/srl-chart.component';
-import { ChartsModule } from 'ng2-charts';
-import { ReflectionPageComponent } from './reflection-page/reflection-page.component';
-import { LearningGoalChartComponent } from './learning-goal-chart/learning-goal-chart.component';
-import { WeekdayComponent } from './planning/weekday.component';
-import { MonitorPageComponent } from './monitor-page/monitor-page.component';
-import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EffectsModule } from '@ngrx/effects';
-import { AppEffects } from './app.effects';
+import { SrlChartComponent } from "./srl-chart/srl-chart.component";
+import { ChartsModule } from "ng2-charts";
+import { ReflectionPageComponent } from "./reflection-page/reflection-page.component";
+import { LearningGoalChartComponent } from "./learning-goal-chart/learning-goal-chart.component";
+import { WeekdayComponent } from "./planning/weekday.component";
+import { MonitorPageComponent } from "./monitor-page/monitor-page.component";
+import { StoreModule } from "@ngrx/store";
+import { reducers, metaReducers } from "./reducers";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { EffectsModule } from "@ngrx/effects";
+import { AppEffects } from "./app.effects";
 
 const routes: Routes = [
   {
@@ -61,7 +61,11 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ChartsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    !environment.production
+      ? StoreDevtoolsModule.instrument({
+          name: "Self Control Widget"
+        })
+      : [],
     EffectsModule.forRoot([AppEffects])
   ],
 

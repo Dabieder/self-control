@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Time } from "@angular/common";
+import { Store } from "@ngrx/store";
+import { PlanningState } from "../reducers";
 
 @Component({
   selector: "app-planning",
@@ -10,7 +12,7 @@ export class PlanningComponent implements OnInit {
   todayLearn: Time;
   weeklyLearn: Time;
 
-  constructor() {}
+  constructor(store: Store<PlanningState>) {}
 
   ngOnInit() {}
 
