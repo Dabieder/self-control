@@ -33,11 +33,35 @@ export class TrackActivitiesComponent implements OnInit {
         selected: false
       },
       {
-        name: "Eating",
-        icon: "local_hotel",
+        name: "Great Food",
+        icon: "restaurant_menu",
+        selected: false
+      },
+      {
+        name: "Cleaning",
+        icon: "gesture",
+        selected: false
+      },
+      {
+        name: "Listening to music",
+        icon: "music_note",
+        selected: false
+      },
+      {
+        name: "Dating",
+        icon: "favorite",
+        selected: false
+      },
+      {
+        name: "Reading",
+        icon: "chrome_reader_mode",
+        selected: false
+      },
+      {
+        name: "Shopping",
+        icon: "shopping_cart",
         selected: false
       }
     ];
   }
-
 }

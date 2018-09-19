@@ -2,19 +2,7 @@
 <div class="content-wrapper">
   <div class="activities">
     <div *ngFor="let activity of activities" class="activity-button">
-      <!-- <div>
-        <button
-        (click)="activityClick($event, activity)"
-        mat-icon-button class="round-icon">
-          <mat-icon>
-            {{activity.icon}}
-          </mat-icon>
-        </button>
-      </div>
-      <div class="activity-label">
-      <span >{{activity.name}}</span>
-    </div> -->
-    <app-tracking-item [trackingItem]="activity"></app-tracking-item>
+      <app-tracking-item [trackingItem]="activity"></app-tracking-item>
     </div>
   </div>
 </div>

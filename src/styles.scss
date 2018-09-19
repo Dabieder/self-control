@@ -22,13 +22,17 @@ body {
   font-size: calc(1vw + 1vh + 0.5vmin);
 }
 
-.mat-slider{
-  width: 80%;
+.mat-slider-wide {
+  width: 80% !important;
 }
 
-.mat-slider-thumb{
+.mat-slider-thumb {
   width: 30px !important;
   height: 30px !important;
   right: -15px !important;
   bottom: -15px !important;
+}
+
+.activity-button {
+  width: 5em;
 }

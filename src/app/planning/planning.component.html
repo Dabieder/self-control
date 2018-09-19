@@ -1,10 +1,10 @@
 <div class="container">
   <div class="col-md-8 offset-md-2">
     <p>
-      How much time do you want to invest <b>this week</b>?
+      How many hours do you want to invest <b>this week</b>?
     </p>
     <mat-form-field>
-      <input type="number" placeholder="Hours" min="0" max="168" matInput>
+      <input type="tel" placeholder="Hours" min="0" max="168" matInput>
     </mat-form-field>
 
   </div>
@@ -13,33 +13,22 @@
       How much time do you want to invest <b>each day</b>?
     </span>
 
-    <div class="day-grid container">
-      <span class="day">Monday: </span>
-      <mat-form-field class="" >
-        <input type="number" placeholder="Hours" min="0" max="24" matInput>
-      </mat-form-field>
-
-      <span class="day">Tuesday: </span>
-      <mat-form-field>
-        <input type="number" placeholder="Hours" min="0" max="24" matInput>
-      </mat-form-field>
-
-      <span class="day">Wednesday: </span>
-      <mat-form-field>
-        <input type="number" placeholder="Hours" min="0" max="24" matInput>
-      </mat-form-field>
-
-      <span class="day">Thursday: </span>
-      <mat-form-field>
-        <input type="number" placeholder="Hours" min="0" max="24" matInput>
-      </mat-form-field>
-
-      <span class="day">Friday: </span>
-      <mat-form-field>
-        <input type="number" placeholder="Hours" min="0" max="24" matInput>
-      </mat-form-field>
+    <div class="container">
+      <app-weekday 
+      (timeValueChange)="onTimeValueChange($event)"
+      name="Mon"></app-weekday>
+      <app-weekday name="Tue"></app-weekday>
+      <app-weekday name="Wed"></app-weekday>
+      <app-weekday name="Thu"></app-weekday>
+      <app-weekday name="Fri"></app-weekday>
+      <app-weekday name="Sat"></app-weekday>
+      <app-weekday name="Sun"></app-weekday>
     </div>
 
   </div>
+
+  <button mat-raised-button 
+  class="btn-block"
+  color="primary">Submit</button>
 
 </div>

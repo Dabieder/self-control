@@ -14,6 +14,11 @@ import "hammerjs";
 import { TrackingItemComponent } from "./activity-item/tracking-item.component";
 import { MoodComponent } from "./mood/mood.component";
 import { SrlChartComponent } from './srl-chart/srl-chart.component';
+import { ChartsModule } from 'ng2-charts';
+import { ReflectionPageComponent } from './reflection-page/reflection-page.component';
+import { LearningGoalChartComponent } from './learning-goal-chart/learning-goal-chart.component';
+import { WeekdayComponent } from './planning/weekday.component';
+import { MonitorPageComponent } from './monitor-page/monitor-page.component';
 
 const routes: Routes = [
   {
@@ -35,7 +40,11 @@ const routes: Routes = [
     PlanningComponent,
     TrackingItemComponent,
     MoodComponent,
-    SrlChartComponent
+    SrlChartComponent,
+    ReflectionPageComponent,
+    LearningGoalChartComponent,
+    WeekdayComponent,
+    MonitorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +53,8 @@ const routes: Routes = [
     ServiceWorkerModule.register("/ngsw-worker.js", {
       enabled: environment.production
     }),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ChartsModule
   ],
 
   providers: [],

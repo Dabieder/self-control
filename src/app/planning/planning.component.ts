@@ -13,4 +13,8 @@ export class PlanningComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  onTimeValueChange(event: any) {
+    console.log("time value change event", event);
+  }
 }

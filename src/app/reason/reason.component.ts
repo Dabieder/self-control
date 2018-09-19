@@ -13,27 +13,27 @@ export class ReasonComponent implements OnInit {
   ngOnInit() {
     this.activities = [
       {
-        name: "Not in the mood",
+        name: "Other responsibilities",
         icon: "face",
         selected: true
       },
       {
-        name: "Too difficult",
+        name: "More time-consuming than expected",
         icon: "settings_input_antenna",
         selected: false
       },
       {
-        name: "Social life",
+        name: "Need for group discussion",
         icon: "group",
         selected: false
       },
+      // {
+      //   name: "Work",
+      //   icon: "attach_money",
+      //   selected: false
+      // },
       {
-        name: "Work",
-        icon: "attach_money",
-        selected: false
-      },
-      {
-        name: "Stress",
+        name: "Lack of information",
         icon: "contact_support",
         selected: false
       }
