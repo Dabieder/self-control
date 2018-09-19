@@ -10,3 +10,5 @@ export class SubmitWeeklyPlanAction implements Action {
 
   constructor(payload: WeeklyPlan) {}
 }
+
+export type PlanningActionsUnion = SubmitWeeklyPlanAction;

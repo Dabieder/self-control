@@ -20,7 +20,7 @@ import { LearningGoalChartComponent } from "./learning-goal-chart/learning-goal-
 import { WeekdayComponent } from "./planning/weekday.component";
 import { MonitorPageComponent } from "./monitor-page/monitor-page.component";
 import { StoreModule } from "@ngrx/store";
-import { reducers, metaReducers } from "./reducers";
+import { reducers } from "./reducers";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { EffectsModule } from "@ngrx/effects";
 import { AppEffects } from "./app.effects";
@@ -60,7 +60,7 @@ const routes: Routes = [
     }),
     RouterModule.forRoot(routes),
     ChartsModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers),
     !environment.production
       ? StoreDevtoolsModule.instrument({
           name: "Self Control Widget"
