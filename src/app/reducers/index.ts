@@ -6,7 +6,10 @@ import {
   MetaReducer
 } from "@ngrx/store";
 import { environment } from "../../environments/environment";
-import { PlanningActionsUnion } from "../app.actions";
+import {
+  PlanningWidgetActionsUnion,
+  PlanningWidgetActionTypes
+} from "../app.actions";
 
 export interface State {
   planning: PlanningState;
@@ -29,8 +32,15 @@ export const metaReducers: MetaReducer<
 >[] = !environment.production ? [] : [];
 
 export function planningReducer(
-  sate: any = initialState,
-  action: PlanningActionsUnion
+  state: any = initialState,
+  action: PlanningWidgetActionsUnion
 ): PlanningState {
-  return initialState;
+  switch (action.type) {
+    case PlanningWidgetActionTypes.SELECTED_WEEK_CHANGE:
+      return Object.assign({}, state, {
+        selectedWeek: action.payload
+      });
+    default:
+      return state;
+  }
 }

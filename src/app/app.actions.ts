@@ -1,14 +1,25 @@
 import { Action } from "@ngrx/store";
 import { WeeklyPlan } from "./models/weekly-plan";
 
-export const PlanActionTypes = {
-  SUBMIT_WEEKLY_PLAN: "[plan] Submit Weekly Plan"
+const prefix = "[planningWidget] ";
+
+export const PlanningWidgetActionTypes = {
+  SUBMIT_WEEKLY_PLAN: prefix + "Submit Weekly Plan",
+  SELECTED_WEEK_CHANGE: prefix + "Week Change"
 };
 
 export class SubmitWeeklyPlanAction implements Action {
-  readonly type = PlanActionTypes.SUBMIT_WEEKLY_PLAN;
+  public readonly type = PlanningWidgetActionTypes.SUBMIT_WEEKLY_PLAN;
 
-  constructor(payload: WeeklyPlan) {}
+  constructor(public payload?: { weeklyPlan: WeeklyPlan }) {}
 }
 
-export type PlanningActionsUnion = SubmitWeeklyPlanAction;
+export class SelectedWeekChangeAction implements Action {
+  public readonly type = PlanningWidgetActionTypes.SELECTED_WEEK_CHANGE;
+
+  constructor(public payload?: { selectedWeek: Date }) {}
+}
+
+export type PlanningWidgetActionsUnion =
+  | SubmitWeeklyPlanAction
+  | SelectedWeekChangeAction;
