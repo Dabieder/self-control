@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { WeekService } from "../week.service";
+import { Store } from "@ngrx/store";
+import { PlanningState } from "../reducers";
+import { SelectedWeekChangeAction } from "../app.actions";
 
 @Component({
   selector: "app-week-selection",
@@ -10,7 +13,10 @@ export class WeekSelectionComponent implements OnInit {
   selectedWeekDisplay = "01.11.18 - 07.11.18";
   selectedWeek: Date;
 
-  constructor(private weekService: WeekService) {}
+  constructor(
+    private weekService: WeekService,
+    private store: Store<PlanningState>
+  ) {}
 
   ngOnInit() {
     this.selectCurrentWeek();
@@ -19,15 +25,24 @@ export class WeekSelectionComponent implements OnInit {
   selectNextWeek() {
     this.selectedWeek = this.weekService.nextWeekDate(this.selectedWeek);
     this.selectedWeekDisplay = this.weekService.toDisplay(this.selectedWeek);
+    this.dispatchWeekChange();
   }
 
   selectPreviousWeek() {
     this.selectedWeek = this.weekService.previousWeekDate(this.selectedWeek);
     this.selectedWeekDisplay = this.weekService.toDisplay(this.selectedWeek);
+    this.dispatchWeekChange();
   }
 
   selectCurrentWeek() {
     this.selectedWeek = this.weekService.getWeekForDay(new Date());
     this.selectedWeekDisplay = this.weekService.toDisplay(this.selectedWeek);
+    this.dispatchWeekChange();
+  }
+
+  dispatchWeekChange() {
+    this.store.dispatch(
+      new SelectedWeekChangeAction({ selectedWeek: this.selectedWeek })
+    );
   }
 }
