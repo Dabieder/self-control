@@ -4,6 +4,6 @@
   <!-- <input type="number" placeholder="Hours" min="0" max="24" matInput> -->
   <mat-slider class="col-6" 
   (input)="onSliderValueChange($event)"
-  [(ngModel)]="value" min="1" max="24"></mat-slider>
+  [(ngModel)]="value" min="0" max="24"></mat-slider>
   <span class="invested-hours-label col">{{hoursDisplay}}</span>
 </div>
