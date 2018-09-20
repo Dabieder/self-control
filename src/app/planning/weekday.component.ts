@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatSliderChange } from '@angular/material';
+import { DailyPlan } from '../models/daily-plan';
 
 @Component({
   selector: 'app-weekday',
@@ -9,9 +10,9 @@ import { MatSliderChange } from '@angular/material';
 export class WeekdayComponent implements OnInit {
 
   @Input() name: string;
-  @Output() timeValueChange = new EventEmitter<number>();
+  @Output() timeValueChange = new EventEmitter<DailyPlan>();
   hoursDisplay = 5;
-
+  dailyPlan = new DailyPlan(new Date(), 0);
   constructor() { }
 
   ngOnInit() {
@@ -19,7 +20,12 @@ export class WeekdayComponent implements OnInit {
 
   onSliderValueChange(event: MatSliderChange) {
     console.log("Slider Value Change event: ", event);
-    this.timeValueChange.emit(event.value);
+    this.dailyPlan.timeCommitment = event.value;
+    this.timeValueChange.emit(this.dailyPlan);
+    this.hoursDisplay = event.value;
+  }
+
+  onSliderValueInput(event: MatSliderChange){
     this.hoursDisplay = event.value;
   }
 

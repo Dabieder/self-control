@@ -20,7 +20,9 @@ export class WeekService {
    */
   getWeekForDay(day: Date): Date {
     const daysToSubtract = day.getDay() - 1;
-    return new Date(day.setDate(day.getDate() - daysToSubtract));
+    const startDate = new Date(day.setDate(day.getDate() - daysToSubtract));
+    startDate.setHours(0, 0, 0, 0);
+    return startDate;
   }
 
   previousWeekDate(week: Date) {

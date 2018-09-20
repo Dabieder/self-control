@@ -11,13 +11,13 @@ export const PlanningWidgetActionTypes = {
 export class SubmitWeeklyPlanAction implements Action {
   public readonly type = PlanningWidgetActionTypes.SUBMIT_WEEKLY_PLAN;
 
-  constructor(public payload?: { weeklyPlan: WeeklyPlan }) {}
+  constructor(public payload: { weeklyPlan: WeeklyPlan }) {}
 }
 
 export class SelectedWeekChangeAction implements Action {
   public readonly type = PlanningWidgetActionTypes.SELECTED_WEEK_CHANGE;
 
-  constructor(public payload?: { selectedWeek: Date }) {}
+  constructor(public payload: { selectedWeek: Date }) {}
 }
 
 export type PlanningWidgetActionsUnion =

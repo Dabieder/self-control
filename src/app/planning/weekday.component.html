@@ -3,7 +3,8 @@
   <span class="day-label col">{{name}}:</span>
   <!-- <input type="number" placeholder="Hours" min="0" max="24" matInput> -->
   <mat-slider class="col-6" 
-  (input)="onSliderValueChange($event)"
-  [(ngModel)]="value" min="0" max="24"></mat-slider>
+  (input)="onSliderValueInput($event)"
+  (change)="onSliderValueChange($event)"
+  [(ngModel)]="dailyPlan.timeCommitment" min="0" max="24"></mat-slider>
   <span class="invested-hours-label col">{{hoursDisplay}}</span>
 </div>

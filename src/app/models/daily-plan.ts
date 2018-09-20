@@ -1,4 +1,3 @@
 export class DailyPlan {
-  day: Date;
-  dailyTime: number;
+  constructor(public day?: Date, public timeCommitment?: number) {}
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { WeekService } from "../week.service";
 import { Store } from "@ngrx/store";
-import { PlanningState } from "../reducers";
+import { PlanningWidgetState, State } from "../reducers";
 import { SelectedWeekChangeAction } from "../app.actions";
 
 @Component({
@@ -13,13 +13,16 @@ export class WeekSelectionComponent implements OnInit {
   selectedWeekDisplay = "01.11.18 - 07.11.18";
   selectedWeek: Date;
 
-  constructor(
-    private weekService: WeekService,
-    private store: Store<PlanningState>
-  ) {}
+  constructor(private weekService: WeekService, private store: Store<State>) {}
 
   ngOnInit() {
     this.selectCurrentWeek();
+
+    this.store
+      .select(state => state.srlWidget.weeklyPlans)
+      .subscribe(plans => {
+        console.log("plans: ", plans);
+      });
   }
 
   selectNextWeek() {

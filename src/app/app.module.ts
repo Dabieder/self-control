@@ -65,7 +65,7 @@ const routes: Routes = [
     StoreModule.forRoot(reducers),
     !environment.production
       ? StoreDevtoolsModule.instrument({
-          name: "Self Control Widget"
+          name: "SRL Widget"
         })
       : [],
     EffectsModule.forRoot([AppEffects])

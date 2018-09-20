@@ -8,39 +8,54 @@ import {
 import { environment } from "../../environments/environment";
 import {
   PlanningWidgetActionsUnion,
-  PlanningWidgetActionTypes
+  PlanningWidgetActionTypes,
+  SelectedWeekChangeAction
 } from "../app.actions";
+import { WeeklyPlan } from "../models/weekly-plan";
 
 export interface State {
-  planning: PlanningState;
+  srlWidget: PlanningWidgetState;
 }
 
-export interface PlanningState {
-  selectedWeek: Date;
+export interface PlanningWidgetState {
+  selectedWeek: WeeklyPlan;
+  weeklyPlans: { [week: string]: WeeklyPlan };
+  weeklyResults: { [week: string]: WeeklyPlan };
 }
 
-const initialState: PlanningState = {
-  selectedWeek: new Date()
+const initialState: PlanningWidgetState = {
+  selectedWeek: WeeklyPlan.createDefault(),
+  weeklyPlans: {
+    "20180920": WeeklyPlan.createDefault()
+  },
+  weeklyResults: { "20180920": new WeeklyPlan() }
 };
 
 export const reducers: ActionReducerMap<State> = {
-  planning: planningReducer
+  srlWidget: planningReducer
 };
 
 export const metaReducers: MetaReducer<
-  PlanningState
+  PlanningWidgetState
 >[] = !environment.production ? [] : [];
 
 export function planningReducer(
   state: any = initialState,
   action: PlanningWidgetActionsUnion
-): PlanningState {
+): PlanningWidgetState {
   switch (action.type) {
     case PlanningWidgetActionTypes.SELECTED_WEEK_CHANGE:
       return Object.assign({}, state, {
-        selectedWeek: action.payload
+        selectedWeek: (<SelectedWeekChangeAction>action).payload.selectedWeek
       });
     default:
       return state;
   }
 }
+
+export const selectedWeek = (state: PlanningWidgetState) => state.selectedWeek;
+
+export const getSelectedWeek = createSelector(
+  (state: PlanningWidgetState) => state,
+  selectedWeek
+);
