@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { MatSliderChange } from "@angular/material";
+import { DailyPlan } from "../models/daily-plan";
 
 @Component({
   selector: "app-rating-page",
@@ -9,6 +10,9 @@ import { MatSliderChange } from "@angular/material";
 export class RatingPageComponent implements OnInit {
   value = 50;
   goalDisplay = 0;
+
+  @Input() dailyPlan: DailyPlan;
+
   constructor() {}
 
   ngOnInit() {}

@@ -5,7 +5,7 @@ import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
-import { RatingPageComponent } from "./rating/rating-page.component";
+import { RatingPageComponent } from "./monitor/rating-page.component";
 import { TrackActivitiesComponent } from "./activities/track-activities.component";
 import { MaterialModule } from "./material.module";
 import { ReasonComponent } from "./reason/reason.component";
@@ -18,7 +18,7 @@ import { ChartsModule } from "ng2-charts";
 import { ReflectionPageComponent } from "./reflection-page/reflection-page.component";
 import { LearningGoalChartComponent } from "./learning-goal-chart/learning-goal-chart.component";
 import { WeekdayComponent } from "./planning/weekday.component";
-import { MonitorPageComponent } from "./monitor-page/monitor-page.component";
+import { MonitorPageComponent } from "./monitor/monitor-page.component";
 import { StoreModule } from "@ngrx/store";
 import { reducers } from "./reducers";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
@@ -26,7 +26,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { AppEffects } from "./app.effects";
 import { WeekSelectionComponent } from "./planning/week-selection.component";
 import { SrlWidgetComponent } from "./srl-widget/srl-widget.component";
-import { WeekdaySelectionComponent } from './monitor/weekday-selection.component';
+import { WeekdaySelectionComponent } from "./monitor/weekday-selection.component";
 
 const routes: Routes = [
   {

@@ -1,0 +1,21 @@
+<div class="container" *ngIf="weeklyPlan$ | async as plan">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary" (click)="daySelect(1)">Mon</button>
+        <button type="button" class="btn btn-primary" (click)="daySelect(2)">Tue</button>
+        <button type="button" class="btn btn-primary" (click)="daySelect(3)">Wed</button>
+        <button type="button" class="btn btn-primary" (click)="daySelect(4)">Thu</button>
+        <button type="button" class="btn btn-primary" (click)="daySelect(5)">Fri</button>
+        <button type="button" class="btn btn-primary" (click)="daySelect(6)">Sat</button>
+        <button type="button" class="btn btn-primary" (click)="daySelect(0)">Sun</button>
+    </div>
+
+    <mat-divider></mat-divider>
+    <app-rating-page
+    dailyPlan="plan.plannedTimeByDays[selectedDay]"
+    ></app-rating-page>
+    <mat-divider></mat-divider>
+    <app-reason></app-reason>
+
+
+    <button class="btn-block fixed-bottom btn-primary" (click)="submitMonitor()" color="primary">Submit</button>
+</div>

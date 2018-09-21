@@ -2,10 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Time } from "@angular/common";
 import { Store, select } from "@ngrx/store";
 import {
-  PlanningWidgetState,
-  getSelectedWeek,
   State,
-  getWeeklyPlans,
   getCurrentWeeklyPlan
 } from "../reducers";
 import { map, take } from "rxjs/operators";
