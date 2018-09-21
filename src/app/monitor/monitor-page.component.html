@@ -1,38 +1,39 @@
 <div class="container" *ngIf="weeklyPlan$ | async as plan">
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary" (click)="daySelect(0)">Mon</button>
-        <button type="button" class="btn btn-primary" (click)="daySelect(1)">Tue</button>
-        <button type="button" class="btn btn-primary" (click)="daySelect(2)">Wed</button>
-        <button type="button" class="btn btn-primary" (click)="daySelect(3)">Thu</button>
-        <button type="button" class="btn btn-primary" (click)="daySelect(4)">Fri</button>
-        <button type="button" class="btn btn-primary" (click)="daySelect(5)">Sat</button>
-        <button type="button" class="btn btn-primary" (click)="daySelect(6)">Sun</button>
-    </div>
 
-    <mat-tab-group>
+    <mat-tab-group [selectedIndex]="3">
         <mat-tab class="mat-tab-label-narrow">
             <ng-template mat-tab-label>
-                Mon
+                <div (click)="daySelect(0)">Mon</div>
             </ng-template>
         </mat-tab>
         <mat-tab class="mat-tab-label-narrow">
             <ng-template mat-tab-label>
-                Tue
+                <div (click)="daySelect(1)">Tue</div>
             </ng-template>
         </mat-tab>
         <mat-tab>
             <ng-template mat-tab-label>
-                Wed
+                <div (click)="daySelect(2)">Wed</div>
             </ng-template>
         </mat-tab>
         <mat-tab>
             <ng-template mat-tab-label>
-                Thu
+                <div (click)="daySelect(3)">Thu</div>
             </ng-template>
         </mat-tab>
         <mat-tab>
             <ng-template mat-tab-label>
-                Fri
+                <div (click)="daySelect(4)">Fri</div>
+            </ng-template>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <div (click)="daySelect(5)">Sat</div>
+            </ng-template>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <div (click)="daySelect(6)">Sun</div>
             </ng-template>
         </mat-tab>
     </mat-tab-group>

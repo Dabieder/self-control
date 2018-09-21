@@ -30,6 +30,7 @@ export class MonitorPageComponent implements OnInit {
   }
 
   daySelect(day: number) {
+    console.log("Clicked on DaySelect");
     this.selectedDay = day;
   }
 }
