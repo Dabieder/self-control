@@ -24,7 +24,9 @@ import { reducers } from "./reducers";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { EffectsModule } from "@ngrx/effects";
 import { AppEffects } from "./app.effects";
-import { WeekSelectionComponent } from './planning/week-selection.component';
+import { WeekSelectionComponent } from "./planning/week-selection.component";
+import { SrlWidgetComponent } from "./srl-widget/srl-widget.component";
+import { WeekdaySelectionComponent } from './monitor/weekday-selection.component';
 
 const routes: Routes = [
   {
@@ -51,7 +53,9 @@ const routes: Routes = [
     LearningGoalChartComponent,
     WeekdayComponent,
     MonitorPageComponent,
-    WeekSelectionComponent
+    WeekSelectionComponent,
+    SrlWidgetComponent,
+    WeekdaySelectionComponent
   ],
   imports: [
     BrowserModule,

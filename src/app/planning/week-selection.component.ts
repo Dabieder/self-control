@@ -2,7 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { WeekService } from "../week.service";
 import { Store } from "@ngrx/store";
 import { PlanningWidgetState, State } from "../reducers";
-import { SelectedWeekChangeAction } from "../app.actions";
+import {
+  SelectedWeekChangeAction,
+  WeeklyPlansUpdatedAction,
+  SelectedWeeklyPlanChangeAction
+} from "../app.actions";
+import { WeeklyPlanningService } from "../weekly-planning.service";
+import { WeeklyPlan, WeeklyPlans } from "../models/weekly-plan";
 
 @Component({
   selector: "app-week-selection",
@@ -12,34 +18,56 @@ import { SelectedWeekChangeAction } from "../app.actions";
 export class WeekSelectionComponent implements OnInit {
   selectedWeekDisplay = "01.11.18 - 07.11.18";
   selectedWeek: Date;
+  weeklyPlans: WeeklyPlans;
 
-  constructor(private weekService: WeekService, private store: Store<State>) {}
+  constructor(
+    private weekService: WeekService,
+    private weeklyPlanningService: WeeklyPlanningService,
+    private store: Store<State>
+  ) {}
 
   ngOnInit() {
     this.selectCurrentWeek();
 
-    this.store
-      .select(state => state.srlWidget.weeklyPlans)
-      .subscribe(plans => {
-        console.log("plans: ", plans);
-      });
+    this.store.select(state => state.srlWidget.weeklyPlans).subscribe(plans => {
+      this.weeklyPlans = plans;
+      this.checkAndAddWeekToPlan();
+    });
+  }
+
+  checkAndAddWeekToPlan() {
+    if (this.weeklyPlans) {
+      const weekAsKey = WeekService.toDictionaryKey(this.selectedWeek);
+      console.log("Checking and adding week: ", weekAsKey);
+      if (!this.weeklyPlans[weekAsKey]) {
+        console.log("Plans do not yet contain the week as a key");
+        const newPlan = WeeklyPlan.createForWeek(this.selectedWeek);
+        this.weeklyPlans[weekAsKey] = newPlan;
+        this.store.dispatch(
+          new WeeklyPlansUpdatedAction({ weeklyPlans: this.weeklyPlans })
+        );
+      }
+    }
   }
 
   selectNextWeek() {
-    this.selectedWeek = this.weekService.nextWeekDate(this.selectedWeek);
-    this.selectedWeekDisplay = this.weekService.toDisplay(this.selectedWeek);
+    this.selectedWeek = WeekService.nextWeekDate(this.selectedWeek);
+    this.selectedWeekDisplay = WeekService.toDisplay(this.selectedWeek);
+    this.checkAndAddWeekToPlan();
     this.dispatchWeekChange();
   }
 
   selectPreviousWeek() {
-    this.selectedWeek = this.weekService.previousWeekDate(this.selectedWeek);
-    this.selectedWeekDisplay = this.weekService.toDisplay(this.selectedWeek);
+    this.selectedWeek = WeekService.previousWeekDate(this.selectedWeek);
+    this.selectedWeekDisplay = WeekService.toDisplay(this.selectedWeek);
+    this.checkAndAddWeekToPlan();
     this.dispatchWeekChange();
   }
 
   selectCurrentWeek() {
-    this.selectedWeek = this.weekService.getWeekForDay(new Date());
-    this.selectedWeekDisplay = this.weekService.toDisplay(this.selectedWeek);
+    this.selectedWeek = WeekService.getWeekForDay(new Date(Date.now()));
+    this.selectedWeekDisplay = WeekService.toDisplay(this.selectedWeek);
+    this.checkAndAddWeekToPlan();
     this.dispatchWeekChange();
   }
 

@@ -1,21 +1,27 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MatSliderChange } from '@angular/material';
-import { DailyPlan } from '../models/daily-plan';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { MatSliderChange } from "@angular/material";
+import { DailyPlan } from "../models/daily-plan";
+import { State } from "../reducers";
+import { Store } from "@ngrx/store";
 
 @Component({
-  selector: 'app-weekday',
-  templateUrl: './weekday.component.html',
-  styleUrls: ['./weekday.component.scss']
+  selector: "app-weekday",
+  templateUrl: "./weekday.component.html",
+  styleUrls: ["./weekday.component.scss"]
 })
 export class WeekdayComponent implements OnInit {
-
-  @Input() name: string;
-  @Output() timeValueChange = new EventEmitter<DailyPlan>();
-  hoursDisplay = 5;
+  @Input()
+  name: string;
+  @Output()
+  timeValueChange = new EventEmitter<DailyPlan>();
+  hoursDisplay = 0;
+  @Input()
   dailyPlan = new DailyPlan(new Date(), 0);
-  constructor() { }
+
+  constructor(private store: Store<State>) {}
 
   ngOnInit() {
+    console.log("this daily plan is: ", this.dailyPlan);
   }
 
   onSliderValueChange(event: MatSliderChange) {
@@ -25,8 +31,7 @@ export class WeekdayComponent implements OnInit {
     this.hoursDisplay = event.value;
   }
 
-  onSliderValueInput(event: MatSliderChange){
+  onSliderValueInput(event: MatSliderChange) {
     this.hoursDisplay = event.value;
   }
-
 }

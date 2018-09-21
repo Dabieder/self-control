@@ -9,26 +9,30 @@ import { environment } from "../../environments/environment";
 import {
   PlanningWidgetActionsUnion,
   PlanningWidgetActionTypes,
-  SelectedWeekChangeAction
+  SelectedWeekChangeAction,
+  WeeklyPlansUpdatedAction
 } from "../app.actions";
-import { WeeklyPlan } from "../models/weekly-plan";
+import { WeeklyPlan, WeeklyPlans } from "../models/weekly-plan";
+import { WeekService } from "../week.service";
 
 export interface State {
   srlWidget: PlanningWidgetState;
 }
 
 export interface PlanningWidgetState {
-  selectedWeek: WeeklyPlan;
-  weeklyPlans: { [week: string]: WeeklyPlan };
-  weeklyResults: { [week: string]: WeeklyPlan };
+  selectedWeek: Date;
+  weeklyPlans: WeeklyPlans;
+  weeklyResults: WeeklyPlans;
 }
 
 const initialState: PlanningWidgetState = {
-  selectedWeek: WeeklyPlan.createDefault(),
+  selectedWeek: new Date(Date.now()),
   weeklyPlans: {
-    "20180920": WeeklyPlan.createDefault()
+    "2018-09-17": WeeklyPlan.createForWeek(new Date(Date.now()))
   },
-  weeklyResults: { "20180920": new WeeklyPlan() }
+  weeklyResults: {
+    "2018-09-17": WeeklyPlan.createForWeek(new Date(Date.now()))
+  }
 };
 
 export const reducers: ActionReducerMap<State> = {
@@ -40,13 +44,17 @@ export const metaReducers: MetaReducer<
 >[] = !environment.production ? [] : [];
 
 export function planningReducer(
-  state: any = initialState,
+  state: PlanningWidgetState = initialState,
   action: PlanningWidgetActionsUnion
 ): PlanningWidgetState {
   switch (action.type) {
     case PlanningWidgetActionTypes.SELECTED_WEEK_CHANGE:
       return Object.assign({}, state, {
         selectedWeek: (<SelectedWeekChangeAction>action).payload.selectedWeek
+      });
+    case PlanningWidgetActionTypes.WEEKLY_PLANS_UPDATED:
+      return Object.assign({}, state, {
+        weeklyPlans: (<WeeklyPlansUpdatedAction>action).payload.weeklyPlans
       });
     default:
       return state;
@@ -55,7 +63,32 @@ export function planningReducer(
 
 export const selectedWeek = (state: PlanningWidgetState) => state.selectedWeek;
 
+export const getWidgetState = (state: State) => state.srlWidget;
+// export const getWidgetState = createFeatureSelector<PlanningWidgetState>(
+//   "srlWidget"
+// );
+
+export const getWeeklyPlans = createSelector(
+  getWidgetState,
+  widgetState => widgetState.weeklyPlans
+);
+
 export const getSelectedWeek = createSelector(
-  (state: PlanningWidgetState) => state,
+  getWidgetState,
   selectedWeek
+);
+
+export const getCurrentWeeklyPlan = createSelector(
+  getWidgetState,
+  getWeeklyPlans,
+  getSelectedWeek,
+  (state, plans, date) => {
+    console.log("Getting current weekly plan for date: ", date);
+    const key = WeekService.toDictionaryKey(date);
+    if (plans[key]) {
+      return plans[key];
+    }
+    console.log("do not got here");
+    return null;
+  }
 );

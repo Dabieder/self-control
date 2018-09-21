@@ -6,5 +6,5 @@
   (input)="onSliderValueInput($event)"
   (change)="onSliderValueChange($event)"
   [(ngModel)]="dailyPlan.timeCommitment" min="0" max="24"></mat-slider>
-  <span class="invested-hours-label col">{{hoursDisplay}}</span>
+  <span class="invested-hours-label col">{{dailyPlan.timeCommitment}}</span>
 </div>

@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import {
+  PlanningWidgetState,
+  getSelectedWeek,
+  State,
+  getWeeklyPlans,
+  getCurrentWeeklyPlan
+} from "../reducers";
 
 @Component({
   selector: 'app-reflection-page',
@@ -7,7 +15,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReflectionPageComponent implements OnInit {
 
-  constructor() { }
+  weeklyPlan$ = this.store.select(getCurrentWeeklyPlan);
+
+  constructor(private store: Store<State>) { }
 
   ngOnInit() {
   }
