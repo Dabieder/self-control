@@ -3,6 +3,7 @@ import { Store } from "@ngrx/store";
 import { State, getCurrentWeeklyPlan } from "../reducers";
 import { WeekDay } from "@angular/common";
 import { WeeklyPlan } from "../models/weekly-plan";
+import { WeekService } from "../week.service";
 
 @Component({
   selector: "app-monitor-page",
@@ -19,8 +20,9 @@ export class MonitorPageComponent implements OnInit {
 
   ngOnInit() {
     this.store.select(getCurrentWeeklyPlan).subscribe(plan => {
-      
+
     });
+    this.selectedDay = new Date(Date.now()).getDay() - WeekService.FirstWeekDay;
   }
 
   submitMonitor() {
@@ -29,6 +31,5 @@ export class MonitorPageComponent implements OnInit {
 
   daySelect(day: number) {
     this.selectedDay = day;
-
   }
 }

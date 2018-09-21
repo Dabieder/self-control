@@ -21,5 +21,6 @@ export class RatingPageComponent implements OnInit {
     this.goalDisplay = event.value;
 
     console.log("Daily Plan: ", this.dailyPlan);
+    this.dailyPlan.actualTimeCommitment = event.value;
   }
 }

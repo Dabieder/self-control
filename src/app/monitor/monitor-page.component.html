@@ -1,18 +1,46 @@
 <div class="container" *ngIf="weeklyPlan$ | async as plan">
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary" (click)="daySelect(1)">Mon</button>
-        <button type="button" class="btn btn-primary" (click)="daySelect(2)">Tue</button>
-        <button type="button" class="btn btn-primary" (click)="daySelect(3)">Wed</button>
-        <button type="button" class="btn btn-primary" (click)="daySelect(4)">Thu</button>
-        <button type="button" class="btn btn-primary" (click)="daySelect(5)">Fri</button>
-        <button type="button" class="btn btn-primary" (click)="daySelect(6)">Sat</button>
-        <button type="button" class="btn btn-primary" (click)="daySelect(0)">Sun</button>
+        <button type="button" class="btn btn-primary" (click)="daySelect(0)">Mon</button>
+        <button type="button" class="btn btn-primary" (click)="daySelect(1)">Tue</button>
+        <button type="button" class="btn btn-primary" (click)="daySelect(2)">Wed</button>
+        <button type="button" class="btn btn-primary" (click)="daySelect(3)">Thu</button>
+        <button type="button" class="btn btn-primary" (click)="daySelect(4)">Fri</button>
+        <button type="button" class="btn btn-primary" (click)="daySelect(5)">Sat</button>
+        <button type="button" class="btn btn-primary" (click)="daySelect(6)">Sun</button>
     </div>
 
+    <mat-tab-group>
+        <mat-tab class="mat-tab-label-narrow">
+            <ng-template mat-tab-label>
+                Mon
+            </ng-template>
+        </mat-tab>
+        <mat-tab class="mat-tab-label-narrow">
+            <ng-template mat-tab-label>
+                Tue
+            </ng-template>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                Wed
+            </ng-template>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                Thu
+            </ng-template>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                Fri
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+
+    <span>{{selectedDay}}</span>
+
     <mat-divider></mat-divider>
-    <app-rating-page
-    [dailyPlan]="plan.plannedTimeByDays[selectedDay]"
-    ></app-rating-page>
+    <app-rating-page [dailyPlan]="plan.plannedTimeByDays[selectedDay]"></app-rating-page>
     <mat-divider></mat-divider>
     <app-reason></app-reason>
 

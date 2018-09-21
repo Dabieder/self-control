@@ -10,6 +10,10 @@ export class WeekService {
     month: "2-digit"
   };
   public static defaultCocale = "de-DE";
+  /**
+   * Whether the week starts on on monday(1) or sunday(0)
+   */
+  public static FirstWeekDay = 1;
 
   constructor() {}
 
@@ -32,7 +36,7 @@ export class WeekService {
   }
 
   public static getWeekForDay(day: Date): Date {
-    const daysToSubtract = day.getDay() - 1;
+    const daysToSubtract = day.getDay() - this.FirstWeekDay;
     const startDate = new Date(day.setDate(day.getDate() - daysToSubtract));
     startDate.setHours(0, 0, 0, 0);
     return startDate;
