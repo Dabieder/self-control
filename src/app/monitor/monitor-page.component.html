@@ -11,7 +11,7 @@
 
     <mat-divider></mat-divider>
     <app-rating-page
-    dailyPlan="plan.plannedTimeByDays[selectedDay]"
+    [dailyPlan]="plan.plannedTimeByDays[selectedDay]"
     ></app-rating-page>
     <mat-divider></mat-divider>
     <app-reason></app-reason>
