@@ -1,4 +1,4 @@
-<div class="row weekday-row">
+<div class="row weekday-row shadow-sm">
   <span class="day-label col">{{name}}:</span>
   <mat-slider class="col-6" (input)="onSliderValueInput($event)" (change)="onSliderValueChange($event)" [(ngModel)]="dailyPlan.timeCommitment"
     min="0" max="24"></mat-slider>

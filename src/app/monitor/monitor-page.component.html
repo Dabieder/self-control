@@ -43,7 +43,7 @@
     <mat-divider></mat-divider>
     <app-rating-page [dailyPlan]="plan.plannedTimeByDays[selectedDay]"></app-rating-page>
     <mat-divider></mat-divider>
-    <app-reason></app-reason>
+    <app-reason [dailyPlan]="plan.plannedTimeByDays[selectedDay]"></app-reason>
 
 
     <button class="btn-block fixed-bottom btn-primary" (click)="submitMonitor()" color="primary">Submit</button>

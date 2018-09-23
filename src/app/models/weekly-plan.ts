@@ -16,7 +16,7 @@ export class WeeklyPlan {
     for (let i = 0; i < 7; i++) {
       const day = new Date(plan.weekStartDate);
       day.setDate(plan.weekStartDate.getDate() + i);
-      console.log("Creating Daily plan for day: ", day);
+      
       const dailyPlan = new DailyPlan(day, 0);
       plan.plannedTimeByDays.push(dailyPlan);
       plan.hoursPerWeek = 0;

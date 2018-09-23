@@ -1,4 +1,6 @@
-import { Component, OnInit, Renderer2 } from "@angular/core";
+import { Component, OnInit, Renderer2, Input } from "@angular/core";
+import { DailyPlan } from "../models/daily-plan";
+import { TrackingItem } from "../models/tracking-item";
 
 @Component({
   selector: "app-reason",
@@ -7,8 +9,9 @@ import { Component, OnInit, Renderer2 } from "@angular/core";
 })
 export class ReasonComponent implements OnInit {
   public activities: any;
+  @Input() dailyPlan: DailyPlan;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
     this.activities = [
@@ -40,9 +43,15 @@ export class ReasonComponent implements OnInit {
     ];
   }
 
-  activityClick(event: any, activity: any) {
-    console.log("Event: ", event);
-    console.log("Clicked on activity: ", activity);
-    this.renderer.addClass(event.srcElement, "selected-activity");
+  onActivityToggled(activity: TrackingItem) {
+    console.log("Activity toggled: ", activity);
+    const name = activity.name;
+    const index = this.dailyPlan.reasonsForNotReachingGoals.indexOf(name);
+    if(index === -1 && activity.selected){
+      this.dailyPlan.reasonsForNotReachingGoals.push(name);
+    }
+    else if (index > -1 && !activity.selected){
+      this.dailyPlan.reasonsForNotReachingGoals = this.dailyPlan.reasonsForNotReachingGoals.slice(index, 1);
+    }
   }
 }

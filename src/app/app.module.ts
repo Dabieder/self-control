@@ -8,7 +8,7 @@ import { environment } from "../environments/environment";
 import { RatingPageComponent } from "./monitor/rating-page.component";
 import { TrackActivitiesComponent } from "./activities/track-activities.component";
 import { MaterialModule } from "./material.module";
-import { ReasonComponent } from "./reason/reason.component";
+import { ReasonComponent } from "./monitor/reason.component";
 import { PlanningComponent } from "./planning/planning.component";
 import "hammerjs";
 import { TrackingItemComponent } from "./activity-item/tracking-item.component";
