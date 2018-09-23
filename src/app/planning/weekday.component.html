@@ -1,10 +1,20 @@
-
 <div class="row weekday-row">
   <span class="day-label col">{{name}}:</span>
-  <!-- <input type="number" placeholder="Hours" min="0" max="24" matInput> -->
-  <mat-slider class="col-6" 
-  (input)="onSliderValueInput($event)"
-  (change)="onSliderValueChange($event)"
-  [(ngModel)]="dailyPlan.timeCommitment" min="0" max="24"></mat-slider>
+  <mat-slider class="col-6" (input)="onSliderValueInput($event)" (change)="onSliderValueChange($event)" [(ngModel)]="dailyPlan.timeCommitment"
+    min="0" max="24"></mat-slider>
   <span class="invested-hours-label col">{{dailyPlan.timeCommitment}}</span>
 </div>
+<!-- 
+
+<div class="weekday-row" #container [class.weekday-expanded]="expanded" [class.weekday-collapsed]="!expanded">
+  <div class="expand-weekday-button" (click)="dayExpandToggle($event)">
+    <span class="day-expand-button col">+{{name}}:</span>
+  </div>
+  <div class="row weekday-content">
+    <mat-slider class="col-6" (input)="onSliderValueInput($event)" (change)="onSliderValueChange($event)" [(ngModel)]="dailyPlan.timeCommitment"
+      min="0" max="24"></mat-slider>
+    <div class="time-display">
+      <span class="invested-hours-label col">{{dailyPlan.timeCommitment}}</span>
+    </div>
+  </div>
+</div> -->

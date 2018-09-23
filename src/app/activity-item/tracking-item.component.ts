@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { TrackingItem } from "../models/tracking-item";
 
 @Component({
@@ -8,6 +8,7 @@ import { TrackingItem } from "../models/tracking-item";
 })
 export class TrackingItemComponent implements OnInit {
   @Input() trackingItem: TrackingItem;
+  @Output() activeChange = new EventEmitter<TrackingItem>();
 
   constructor() {}
 
@@ -16,5 +17,6 @@ export class TrackingItemComponent implements OnInit {
   trackingItemClick(event: any) {
     console.log("This, ", this);
     this.trackingItem.selected = !this.trackingItem.selected;
+    this.activeChange.emit(this.trackingItem);
   }
 }

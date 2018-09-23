@@ -2,3 +2,29 @@
     align-items: center;
     justify-content: center;
 }
+
+.expand-weekday-button {
+    border-radius: 5px;
+    background-color: coral;
+    position: relative;
+    top: 10px;
+    left: 10px;
+    width: 60px;
+    height: 30px;
+}
+
+.weekday-collapsed {
+    width: 60px;
+    height: 30px;
+}
+
+.weekday-expanded {
+    width: 100%;
+    height: 100%;
+    transition: 0.2s;
+
+}
+
+.weekday-collapsed > .weekday-content {
+    opacity: 0.0;
+}
