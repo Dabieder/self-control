@@ -1,10 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Time } from "@angular/common";
 import { Store, select } from "@ngrx/store";
-import {
-  State,
-  getCurrentWeeklyPlan
-} from "../reducers";
+import { State, getCurrentWeeklyPlan } from "../reducers";
 import { map, take } from "rxjs/operators";
 import { WeeklyPlan } from "../models/weekly-plan";
 import { SubmitWeeklyPlanAction } from "../app.actions";
@@ -17,6 +14,7 @@ import { Observable } from "rxjs";
 })
 export class PlanningComponent implements OnInit {
   weeklyPlan$ = this.store.select(getCurrentWeeklyPlan);
+  weeklyPlan: WeeklyPlan;
 
   constructor(private store: Store<State>) {}
 

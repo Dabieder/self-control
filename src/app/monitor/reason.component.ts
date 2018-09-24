@@ -1,17 +1,23 @@
-import { Component, OnInit, Renderer2, Input } from "@angular/core";
+import { Component, OnInit, OnDestroy, Renderer2, Input } from "@angular/core";
 import { DailyPlan } from "../models/daily-plan";
 import { TrackingItem } from "../models/tracking-item";
+import { Store, select } from "@ngrx/store";
+import { State, getSelectedWeekday, getSelectedDay } from "../reducers";
+import { Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 
 @Component({
   selector: "app-reason",
   templateUrl: "./reason.component.html",
   styleUrls: ["./reason.component.css"]
 })
-export class ReasonComponent implements OnInit {
+export class ReasonComponent implements OnInit, OnDestroy {
   public activities: any;
-  @Input() dailyPlan: DailyPlan;
+  private unsubscribe$: Subject<void> = new Subject<void>();
+  @Input()
+  dailyPlan: DailyPlan;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private store: Store<State>) {}
 
   ngOnInit() {
     this.activities = [
@@ -41,17 +47,38 @@ export class ReasonComponent implements OnInit {
         selected: false
       }
     ];
+
+    this.store
+      .pipe(
+        select(getSelectedDay),
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe((selectedDay: Date) => {
+        console.log("The Selected Date Changed to: ", selectedDay);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
+  debug() {
+    this.activities[3].selected = !this.activities[3].selected;
   }
 
   onActivityToggled(activity: TrackingItem) {
     console.log("Activity toggled: ", activity);
+    console.log("Plan Reasons: ", this.dailyPlan.reasonsForNotReachingGoals);
     const name = activity.name;
     const index = this.dailyPlan.reasonsForNotReachingGoals.indexOf(name);
-    if(index === -1 && activity.selected){
+    if (index === -1 && activity.selected) {
       this.dailyPlan.reasonsForNotReachingGoals.push(name);
-    }
-    else if (index > -1 && !activity.selected){
-      this.dailyPlan.reasonsForNotReachingGoals = this.dailyPlan.reasonsForNotReachingGoals.slice(index, 1);
+    } else if (index > -1 && !activity.selected) {
+      this.dailyPlan.reasonsForNotReachingGoals = this.dailyPlan.reasonsForNotReachingGoals.slice(
+        index,
+        1
+      );
     }
   }
 }

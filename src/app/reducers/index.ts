@@ -26,12 +26,11 @@ export interface PlanningWidgetState {
   weeklyPlans: WeeklyPlans;
 }
 
+const todayDate = new Date(Date.now());
 const initialState: PlanningWidgetState = {
-  selectedWeek: WeekService.getWeekForDay(new Date(Date.now())),
-  selectedDay: new Date(Date.now()),
-  weeklyPlans: {
-    "2018-09-17": WeeklyPlan.createForWeek(new Date(Date.now()))
-  }
+  selectedWeek: WeekService.getWeekForDay(todayDate),
+  selectedDay: todayDate,
+  weeklyPlans: {}
 };
 
 export const reducers: ActionReducerMap<State> = {
@@ -53,13 +52,15 @@ export function planningReducer(
         selectedWeek: (<SelectedWeekChangeAction>action).payload.selectedWeek
       };
     case PlanningWidgetActionTypes.WEEKLY_PLANS_UPDATED:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         weeklyPlans: (<WeeklyPlansUpdatedAction>action).payload.weeklyPlans
-      });
+      };
     case PlanningWidgetActionTypes.SELECTED_DAY_CHANGE:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         selectedDay: (<SelectedDayChangeAction>action).payload.selectedDay
-      });
+      };
     default:
       return state;
   }
@@ -76,17 +77,27 @@ export const getWeeklyPlans = createSelector(
 
 export const getSelectedWeek = createSelector(getWidgetState, selectedWeek);
 
+export const getSelectedDay = createSelector(getWidgetState, state => {
+  return state.selectedDay;
+});
+
+export const getSelectedWeekday = createSelector(getWidgetState, state => {
+  return state.selectedDay.getDay();
+});
+
+export const getCurrentDailyPlan = createSelector(getWidgetState, state => {
+  return state.weeklyPlans[state.selectedDay.getDay()];
+});
+
 export const getCurrentWeeklyPlan = createSelector(
   getWidgetState,
   getWeeklyPlans,
   getSelectedWeek,
   (state, plans, date) => {
-    console.log("Getting current weekly plan for date: ", date);
     const key = WeekService.toDictionaryKey(date);
     if (plans[key]) {
       return plans[key];
     }
-    console.log("do not got here");
     return null;
   }
 );

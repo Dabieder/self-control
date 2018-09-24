@@ -1,39 +1,39 @@
-<div class="container" *ngIf="weeklyPlan$ | async as plan">
+<div class="container">
 
     <mat-tab-group [(selectedIndex)]="selectedDay">
         <mat-tab class="mat-tab-label-narrow">
             <ng-template mat-tab-label>
-                <div (click)="daySelect(0)">Mon</div>
+                <div (click)="daySelect(1)">Mon</div>
             </ng-template>
         </mat-tab>
         <mat-tab class="mat-tab-label-narrow">
             <ng-template mat-tab-label>
-                <div (click)="daySelect(1)">Tue</div>
+                <div (click)="daySelect(2)">Tue</div>
             </ng-template>
         </mat-tab>
         <mat-tab>
             <ng-template mat-tab-label>
-                <div (click)="daySelect(2)">Wed</div>
+                <div (click)="daySelect(3)">Wed</div>
             </ng-template>
         </mat-tab>
         <mat-tab>
             <ng-template mat-tab-label>
-                <div (click)="daySelect(3)">Thu</div>
+                <div (click)="daySelect(4)">Thu</div>
             </ng-template>
         </mat-tab>
         <mat-tab>
             <ng-template mat-tab-label>
-                <div (click)="daySelect(4)">Fri</div>
+                <div (click)="daySelect(5)">Fri</div>
             </ng-template>
         </mat-tab>
         <mat-tab>
             <ng-template mat-tab-label>
-                <div (click)="daySelect(5)">Sat</div>
+                <div (click)="daySelect(6)">Sat</div>
             </ng-template>
         </mat-tab>
         <mat-tab>
             <ng-template mat-tab-label>
-                <div (click)="daySelect(6)">Sun</div>
+                <div (click)="daySelect(0)">Sun</div>
             </ng-template>
         </mat-tab>
     </mat-tab-group>
@@ -41,9 +41,9 @@
     <span>{{selectedDay}}</span>
 
     <mat-divider></mat-divider>
-    <app-rating-page [dailyPlan]="plan.plannedTimeByDays[selectedDay]"></app-rating-page>
+    <app-rating-page [dailyPlan]="weeklyPlan.dailyPlans[selectedDay]"></app-rating-page>
     <mat-divider></mat-divider>
-    <app-reason [dailyPlan]="plan.plannedTimeByDays[selectedDay]"></app-reason>
+    <app-reason [dailyPlan]="weeklyPlan.dailyPlans[selectedDay]"></app-reason>
 
 
     <button class="btn-block fixed-bottom btn-primary" (click)="submitMonitor()" color="primary">Submit</button>

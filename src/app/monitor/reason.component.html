@@ -2,9 +2,8 @@
 <div class="content-wrapper">
   <div class="activities">
     <div *ngFor="let activity of activities" class="activity-button">
-      <app-tracking-item 
-      (activeChange)="onActivityToggled($event)"
-      [trackingItem]="activity"></app-tracking-item>
+      <app-tracking-item (activeChange)="onActivityToggled($event)" [trackingItem]="activity"></app-tracking-item>
     </div>
   </div>
+  <button (click)="debug()">Debug</button>
 </div>

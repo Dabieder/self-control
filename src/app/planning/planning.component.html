@@ -1,12 +1,10 @@
-<div class="container"  *ngIf="weeklyPlan$ | async as plan">
+<div class="container" *ngIf="weeklyPlan$ | async as plan">
   <div class="col-md-8 offset-md-2">
     <p>
       How many hours do you want to invest <b>this week</b>?
     </p>
     <mat-form-field>
-      <input type="tel" placeholder="Hours" 
-      [(ngModel)]="plan.hoursPerWeek"
-      min="0" max="168" matInput>
+      <input type="tel" placeholder="Hours" [(ngModel)]="plan.hoursPerWeek" min="0" max="168" matInput>
     </mat-form-field>
 
   </div>
@@ -16,29 +14,17 @@
     </span>
 
     <div class="container">
-      <app-weekday 
-      (timeValueChange)="onTimeValueChange($event)"
-      name="Mon"
-      [dailyPlan]="plan.plannedTimeByDays[0]"></app-weekday>
-      <app-weekday name="Tue"
-      [dailyPlan]="plan.plannedTimeByDays[1]"></app-weekday>
-      <app-weekday name="Wed"
-      [dailyPlan]="plan.plannedTimeByDays[2]"></app-weekday>
-      <app-weekday name="Thu"
-      [dailyPlan]="plan.plannedTimeByDays[3]"></app-weekday>
-      <app-weekday name="Fri"
-      [dailyPlan]="plan.plannedTimeByDays[4]"></app-weekday>
-      <app-weekday name="Sat"
-      [dailyPlan]="plan.plannedTimeByDays[5]"></app-weekday>
-      <app-weekday name="Sun"
-      [dailyPlan]="plan.plannedTimeByDays[6]"></app-weekday>
+      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Mon" [dailyPlan]="plan.dailyPlans[0]"></app-weekday>
+      <app-weekday name="Tue" [dailyPlan]="plan.dailyPlans[1]"></app-weekday>
+      <app-weekday name="Wed" [dailyPlan]="plan.dailyPlans[2]"></app-weekday>
+      <app-weekday name="Thu" [dailyPlan]="plan.dailyPlans[3]"></app-weekday>
+      <app-weekday name="Fri" [dailyPlan]="plan.dailyPlans[4]"></app-weekday>
+      <app-weekday name="Sat" [dailyPlan]="plan.dailyPlans[5]"></app-weekday>
+      <app-weekday name="Sun" [dailyPlan]="plan.dailyPlans[6]"></app-weekday>
     </div>
 
   </div>
 
-  <button mat-raised-button 
-  class="btn-block"
-  (click)="submitPlan()"
-  color="primary">Submit</button>
+  <button mat-raised-button class="btn-block" (click)="submitPlan()" color="primary">Submit</button>
 
 </div>

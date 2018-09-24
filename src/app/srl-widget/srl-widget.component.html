@@ -1,3 +1,28 @@
-<p>
-  srl-widget works!
-</p>
+<mat-tab-group [selectedIndex]="1">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Plan
+      </ng-template>
+      <div class="widget-tab">
+        <app-planning></app-planning>
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Monitor
+      </ng-template>
+      <div class="widget-tab">
+        <app-monitor-page></app-monitor-page>
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Reflect
+      </ng-template>
+      <div class="widget-tab">
+        <app-reflection-page></app-reflection-page>
+      </div>
+    </mat-tab>
+  </mat-tab-group>

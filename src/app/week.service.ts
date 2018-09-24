@@ -9,23 +9,20 @@ export class WeekService {
     year: "2-digit",
     month: "2-digit"
   };
-  public static defaultCocale = "de-DE";
-  /**
-   * Whether the week starts on on monday(1) or sunday(0)
-   */
-  public static FirstWeekDay = 1;
+  public static defaultLocale = "de-DE";
+  public static WeekStartOffset = 1;
 
   constructor() {}
 
   public static toDisplay(week: Date) {
     const startDay = week.toLocaleDateString(
-      this.defaultCocale,
+      this.defaultLocale,
       this.dateFormatOptionsWeekSelector
     );
     const endDate = new Date();
-    endDate.setDate(week.getDate() + 7);
+    endDate.setDate(week.getDate() + 6);
     const endDay = endDate.toLocaleDateString(
-      this.defaultCocale,
+      this.defaultLocale,
       this.dateFormatOptionsWeekSelector
     );
     return startDay + " - " + endDay;
@@ -36,16 +33,13 @@ export class WeekService {
   }
 
   public static getWeekForDay(day: Date): Date {
-    const daysToSubtract = day.getDay() - this.FirstWeekDay;
+    const daysToSubtract = (day.getDay() - this.WeekStartOffset) % 6;
+
     const startDate = new Date(day.setDate(day.getDate() - daysToSubtract));
     startDate.setHours(0, 0, 0, 0);
+    console.log("creating week for: ", startDate);
     return startDate;
   }
-  /**
-   *
-   * @param day The day for which to return the previous monday for
-   * @return The monday that starts the week for this day
-   */
 
   public static previousWeekDate(week: Date) {
     return new Date(week.setDate(week.getDate() - 7));
@@ -53,5 +47,9 @@ export class WeekService {
 
   public static nextWeekDate(week: Date) {
     return new Date(week.setDate(week.getDate() + 7));
+  }
+
+  public static TodayDate() {
+    return new Date(Date.now());
   }
 }

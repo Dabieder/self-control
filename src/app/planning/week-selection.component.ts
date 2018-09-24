@@ -38,9 +38,7 @@ export class WeekSelectionComponent implements OnInit {
   checkAndAddWeekToPlan() {
     if (this.weeklyPlans) {
       const weekAsKey = WeekService.toDictionaryKey(this.selectedWeek);
-      console.log("Checking and adding week: ", weekAsKey);
       if (!this.weeklyPlans[weekAsKey]) {
-        console.log("Plans do not yet contain the week as a key");
         const newPlan = WeeklyPlan.createForWeek(this.selectedWeek);
         this.weeklyPlans[weekAsKey] = newPlan;
         this.store.dispatch(

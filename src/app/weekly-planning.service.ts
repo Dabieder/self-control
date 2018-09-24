@@ -3,6 +3,7 @@ import { Store } from "@ngrx/store";
 import { State } from "./reducers";
 import { WeeklyPlan } from "./models/weekly-plan";
 import { WeekService } from "./week.service";
+import { TrackingItem } from "./models/tracking-item";
 
 @Injectable({
   providedIn: "root"
@@ -25,4 +26,6 @@ export class WeeklyPlanningService {
     //   }
     // });
   }
+
+  onActivityToggled(activity: TrackingItem) {}
 }
