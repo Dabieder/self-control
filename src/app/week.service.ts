@@ -36,7 +36,7 @@ export class WeekService {
     const daysToSubtract = (day.getDay() - this.WeekStartOffset) % 6;
 
     const startDate = new Date(day.setDate(day.getDate() - daysToSubtract));
-    startDate.setHours(0, 0, 0, 0);
+    startDate.setHours(12, 12, 12, 12);
     console.log("creating week for: ", startDate);
     return startDate;
   }

@@ -65,6 +65,7 @@ export class WeekSelectionComponent implements OnInit {
   selectCurrentWeek() {
     this.selectedWeek = WeekService.getWeekForDay(new Date(Date.now()));
     this.selectedWeekDisplay = WeekService.toDisplay(this.selectedWeek);
+    console.log("this.selectedweek", this.selectedWeek);
     this.checkAndAddWeekToPlan();
     this.dispatchWeekChange();
   }
