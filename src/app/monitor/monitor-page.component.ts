@@ -16,13 +16,13 @@ export class MonitorPageComponent implements OnInit {
 
   weeklyPlan: WeeklyPlan;
 
-  constructor(private store: Store<State>) { }
+  constructor(private store: Store<State>) {}
 
-  ngOnInit() {
-    this.store.select(getCurrentWeeklyPlan).subscribe(plan => {
+  ngOnInit() {}
 
-    });
-    this.selectedDay = new Date(Date.now()).getDay() + WeekService.FirstWeekDay;
+  setCurrentDay() {
+    this.selectedDay =
+      (new Date(Date.now()).getDay() + WeekService.FirstWeekDay) % 6;
   }
 
   submitMonitor() {
@@ -30,7 +30,7 @@ export class MonitorPageComponent implements OnInit {
   }
 
   daySelect(day: number) {
-    console.log("Clicked on DaySelect");
-    this.selectedDay = day + 1;
+    console.log("Clicked on DaySelect for day: ", day);
+    this.selectedDay = day;
   }
 }

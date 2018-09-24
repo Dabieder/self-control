@@ -22,15 +22,11 @@ export interface State {
 export interface PlanningWidgetState {
   selectedWeek: Date;
   weeklyPlans: WeeklyPlans;
-  weeklyResults: WeeklyPlans;
 }
 
 const initialState: PlanningWidgetState = {
   selectedWeek: new Date(Date.now()),
   weeklyPlans: {
-    "2018-09-17": WeeklyPlan.createForWeek(new Date(Date.now()))
-  },
-  weeklyResults: {
     "2018-09-17": WeeklyPlan.createForWeek(new Date(Date.now()))
   }
 };
@@ -64,9 +60,6 @@ export function planningReducer(
 export const selectedWeek = (state: PlanningWidgetState) => state.selectedWeek;
 
 export const getWidgetState = (state: State) => state.srlWidget;
-// export const getWidgetState = createFeatureSelector<PlanningWidgetState>(
-//   "srlWidget"
-// );
 
 export const getWeeklyPlans = createSelector(
   getWidgetState,
