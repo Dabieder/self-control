@@ -9,6 +9,11 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
+    "paths": {
+      "@app/*": ["app/*"],
+      "@env/*": ["environments/*"],
+      "@testing:/*": ["testing/*"]
+    },
     "types": [
       "hammerjs",
       "jasmine"

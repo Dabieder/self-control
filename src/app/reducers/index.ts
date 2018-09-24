@@ -10,7 +10,8 @@ import {
   PlanningWidgetActionsUnion,
   PlanningWidgetActionTypes,
   SelectedWeekChangeAction,
-  WeeklyPlansUpdatedAction
+  WeeklyPlansUpdatedAction,
+  SelectedDayChangeAction
 } from "../app.actions";
 import { WeeklyPlan, WeeklyPlans } from "../models/weekly-plan";
 import { WeekService } from "../week.service";
@@ -21,11 +22,13 @@ export interface State {
 
 export interface PlanningWidgetState {
   selectedWeek: Date;
+  selectedDay: Date;
   weeklyPlans: WeeklyPlans;
 }
 
 const initialState: PlanningWidgetState = {
-  selectedWeek: new Date(Date.now()),
+  selectedWeek: WeekService.getWeekForDay(new Date(Date.now())),
+  selectedDay: new Date(Date.now()),
   weeklyPlans: {
     "2018-09-17": WeeklyPlan.createForWeek(new Date(Date.now()))
   }
@@ -45,12 +48,17 @@ export function planningReducer(
 ): PlanningWidgetState {
   switch (action.type) {
     case PlanningWidgetActionTypes.SELECTED_WEEK_CHANGE:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         selectedWeek: (<SelectedWeekChangeAction>action).payload.selectedWeek
-      });
+      };
     case PlanningWidgetActionTypes.WEEKLY_PLANS_UPDATED:
       return Object.assign({}, state, {
         weeklyPlans: (<WeeklyPlansUpdatedAction>action).payload.weeklyPlans
+      });
+    case PlanningWidgetActionTypes.SELECTED_DAY_CHANGE:
+      return Object.assign({}, state, {
+        selectedDay: (<SelectedDayChangeAction>action).payload.selectedDay
       });
     default:
       return state;
@@ -66,10 +74,7 @@ export const getWeeklyPlans = createSelector(
   widgetState => widgetState.weeklyPlans
 );
 
-export const getSelectedWeek = createSelector(
-  getWidgetState,
-  selectedWeek
-);
+export const getSelectedWeek = createSelector(getWidgetState, selectedWeek);
 
 export const getCurrentWeeklyPlan = createSelector(
   getWidgetState,

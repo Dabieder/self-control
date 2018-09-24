@@ -18,7 +18,9 @@ export class MonitorPageComponent implements OnInit {
 
   constructor(private store: Store<State>) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.setCurrentDay();
+  }
 
   setCurrentDay() {
     this.selectedDay =
@@ -32,5 +34,6 @@ export class MonitorPageComponent implements OnInit {
   daySelect(day: number) {
     console.log("Clicked on DaySelect for day: ", day);
     this.selectedDay = day;
+    
   }
 }

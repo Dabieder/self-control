@@ -1,14 +1,13 @@
 import { Action } from "@ngrx/store";
 import { WeeklyPlan, WeeklyPlans } from "./models/weekly-plan";
 
-const prefix = "[planningWidget] ";
-
-export const PlanningWidgetActionTypes = {
-  SUBMIT_WEEKLY_PLAN: prefix + "Submit Weekly Plan",
-  SELECTED_WEEK_CHANGE: prefix + " Selected Week Change",
-  SELECTED_WEEKLY_PLAN_CHANGE: prefix + " Selected Weekly Plan Change",
-  WEEKLY_PLANS_UPDATED: prefix + " Weekly Plans Updated"
-};
+export enum PlanningWidgetActionTypes {
+  SUBMIT_WEEKLY_PLAN = "[planningWidget] Submit Weekly Plan",
+  SELECTED_WEEK_CHANGE = "[planningWidget] Selected Week Change",
+  SELECTED_WEEKLY_PLAN_CHANGE = "[planningWidget] Selected Weekly Plan Change",
+  WEEKLY_PLANS_UPDATED = "[planningWidget] Weekly Plans Updated",
+  SELECTED_DAY_CHANGE = "[planningWidget] Selected Day Change"
+}
 
 export class SubmitWeeklyPlanAction implements Action {
   public readonly type = PlanningWidgetActionTypes.SUBMIT_WEEKLY_PLAN;
@@ -20,6 +19,12 @@ export class SelectedWeekChangeAction implements Action {
   public readonly type = PlanningWidgetActionTypes.SELECTED_WEEK_CHANGE;
 
   constructor(public payload: { selectedWeek: Date }) {}
+}
+
+export class SelectedDayChangeAction implements Action {
+  public readonly type = PlanningWidgetActionTypes.SELECTED_DAY_CHANGE;
+
+  constructor(public payload: { selectedDay: Date }) {}
 }
 
 export class SelectedWeeklyPlanChangeAction implements Action {
@@ -36,6 +41,7 @@ export class WeeklyPlansUpdatedAction implements Action {
 
 export type PlanningWidgetActionsUnion =
   | SubmitWeeklyPlanAction
+  | SelectedDayChangeAction
   | SelectedWeekChangeAction
   | SelectedWeeklyPlanChangeAction
   | WeeklyPlansUpdatedAction;
