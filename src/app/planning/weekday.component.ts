@@ -27,7 +27,6 @@ export class WeekdayComponent implements OnInit {
   }
 
   onSliderValueChange(event: MatSliderChange) {
-    console.log("Slider Value Change event: ", event);
     this.dailyPlan.plannedTimeCommitment = event.value;
     this.timeValueChange.emit(this.dailyPlan);
     this.hoursDisplay = event.value;

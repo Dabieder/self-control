@@ -11,7 +11,6 @@ export class WeeklyPlan {
     const plan = new WeeklyPlan();
 
     plan.weekStartDate = WeekService.getWeekForDay(week);
-    console.log("creating plan with start date: ", plan.weekStartDate);
     for (let i = 0; i < 7; i++) {
       const day = new Date(plan.weekStartDate);
       day.setDate(plan.weekStartDate.getDate() + i);
