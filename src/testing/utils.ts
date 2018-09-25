@@ -9,6 +9,7 @@ import {
 } from "@ngrx/store";
 import { BehaviorSubject } from "rxjs";
 import { RouterTestingModule } from "@angular/router/testing";
+import { MaterialModule } from "../app/material.module";
 
 @Injectable()
 export class MockStore<T> extends Store<T> {
@@ -39,6 +40,7 @@ export function provideMockStore() {
   imports: [
     NoopAnimationsModule,
     RouterTestingModule,
+    MaterialModule,
     StoreModule.forRoot({})
   ],
   exports: [

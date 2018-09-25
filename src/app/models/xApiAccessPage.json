@@ -1,0 +1,29 @@
+{
+  "timestamp": "2015-11-20T08:32:21Z",
+  "verb": {
+    "id": "https://www.w3.org/TR/activitystreams-vocabulary/#dfn-view",
+    "display": {
+      "en-US": "Indicates that the actor has viewed the object."
+    }
+  },
+  "actor": {
+    "account": {
+      "homePage": "https://portal.ecolearning.eu?user=563b5ae7e505ccaa61f9f08a",
+      "name": "Dabieder"
+    },
+    "objectType": "Agent"
+  },
+  "object": {
+    "definition": {
+      "type": "http://activitystrea.ms/schema/1.0/article",
+      "name": {
+        "en-US": ""
+      },
+      "description": {
+        "en-US": "Estrategia en la gesti\u00f3n de comunidades Online.          El Community Manager (2ed)"
+      }
+    },
+    "id": "https://hub8.ecolearning.eu/media/attachments/Community_manager_y_comunicacion.pdf",
+    "objectType": "Activity"
+  }
+}

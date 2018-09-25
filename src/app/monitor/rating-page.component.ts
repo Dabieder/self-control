@@ -19,6 +19,6 @@ export class RatingPageComponent implements OnInit {
 
   onSliderValueChange(event: MatSliderChange) {
     this.goalDisplay = event.value;
-    this.dailyPlan.actualTimeCommitment = event.value;
+    this.dailyPlan.actualHours = event.value;
   }
 }

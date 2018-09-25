@@ -1,10 +1,10 @@
 export class DailyPlan {
-  public day: Date;
-  public plannedTimeCommitment: number;
-  public actualTimeCommitment = 0;
-  public reasonsForNotReachingGoals: String[] = [];
+  public date: Date;
+  public plannedHours: number;
+  public actualHours = 0;
+  public reasons: String[] = [];
   constructor(day: Date, timeCommitment: number) {
-    this.day = day;
-    this.plannedTimeCommitment = timeCommitment;
+    this.date = day;
+    this.plannedHours = timeCommitment;
   }
 }

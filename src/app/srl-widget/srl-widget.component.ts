@@ -11,4 +11,8 @@ export class SrlWidgetComponent implements OnInit {
   ngOnInit() {
   }
 
+  submitData() {
+    
+  }
+
 }

@@ -1,0 +1,29 @@
+{
+  "timestamp": "2018-09-25T14:16:31Z",
+  "id": "1",
+  "actor": {
+    "objectType": "Agent",
+    "account": {
+      "name": "Dabieder"
+    }
+  },
+  "verb": {
+    "id": "http://activitystrea.ms/schema/1.0/add",
+    "display": {
+      "en-US": "Indicates the learner adds something"
+    }
+  },
+  "object": {
+    "objectType": "Activity",
+    "id": "http://eco/exampleobjective.html",
+    "definition": {
+      "name": {
+        "en-US": "Learning Goals for the Week 23-09-2018"
+      },
+      "description": {
+        "en-US": "This is an objective"
+      },
+      "type": "http://adlnet.gov/expapi/activities/objective"
+    }
+  }
+}

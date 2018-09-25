@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { WeekdaySelectionComponent } from "./weekday-selection.component";
+import { MaterialModule } from "../material.module";
 
 describe("WeekdaySelectionComponent", () => {
   let component: WeekdaySelectionComponent;
@@ -8,6 +9,7 @@ describe("WeekdaySelectionComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [MaterialModule],
       declarations: [WeekdaySelectionComponent]
     }).compileComponents();
   }));

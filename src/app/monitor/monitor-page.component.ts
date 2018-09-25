@@ -52,7 +52,7 @@ export class MonitorPageComponent implements OnInit, OnDestroy {
 
   daySelect(day: number) {
     this.selectedDay = day;
-    const date = this.weeklyPlan.dailyPlans[this.selectedDay].day;
+    const date = this.weeklyPlan.dailyPlans[this.selectedDay].date;
     this.store.dispatch(new SelectedDayChangeAction({ selectedDay: date }));
   }
 }

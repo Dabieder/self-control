@@ -64,21 +64,17 @@ export class ReasonComponent implements OnInit, OnDestroy {
   }
 
   debug() {
-    this.activities[3].selected = !this.activities[3].selected;
+    console.log("Plan Reasons: ", this.dailyPlan.reasons);
   }
 
   onActivityToggled(activity: TrackingItem) {
     console.log("Activity toggled: ", activity);
-    console.log("Plan Reasons: ", this.dailyPlan.reasonsForNotReachingGoals);
     const name = activity.name;
-    const index = this.dailyPlan.reasonsForNotReachingGoals.indexOf(name);
+    const index = this.dailyPlan.reasons.indexOf(name);
     if (index === -1 && activity.selected) {
-      this.dailyPlan.reasonsForNotReachingGoals.push(name);
+      this.dailyPlan.reasons.push(name);
     } else if (index > -1 && !activity.selected) {
-      this.dailyPlan.reasonsForNotReachingGoals = this.dailyPlan.reasonsForNotReachingGoals.slice(
-        index,
-        1
-      );
+      this.dailyPlan.reasons.splice(index, 1);
     }
   }
 }

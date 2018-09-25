@@ -4,7 +4,7 @@ import { WeekService } from "../week.service";
 
 export class WeeklyPlan {
   public weekStartDate: Date;
-  public hoursPerWeek = 0;
+  public plannedHours = 0;
   public dailyPlans: DailyPlan[] = [];
 
   static createForWeek(week: Date) {
@@ -17,12 +17,12 @@ export class WeeklyPlan {
 
       const dailyPlan = new DailyPlan(day, 0);
       plan.dailyPlans.push(dailyPlan);
-      plan.hoursPerWeek = 0;
+      plan.plannedHours = 0;
     }
     return plan;
   }
 }
 
-export interface WeeklyPlans {
+export class WeeklyPlans {
   [week: string]: WeeklyPlan;
 }
