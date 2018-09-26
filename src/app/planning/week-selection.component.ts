@@ -42,7 +42,7 @@ export class WeekSelectionComponent implements OnInit {
         const newPlan = WeeklyPlan.createForWeek(this.selectedWeek);
         this.weeklyPlans[weekAsKey] = newPlan;
         this.store.dispatch(
-          new WeeklyPlansUpdatedAction({ weeklyPlans: this.weeklyPlans })
+          new WeeklyPlansUpdatedAction({ weeklyPlans: {...this.weeklyPlans} })
         );
       }
     }

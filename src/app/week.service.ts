@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import * as moment from "moment";
 
 @Injectable({
   providedIn: "root"
@@ -29,7 +30,7 @@ export class WeekService {
   }
 
   public static toDictionaryKey(week: Date) {
-    return week.toISOString().substring(0, 10);
+    return moment(week).format("YYYYMMDD");
   }
 
   public static dayToIndex(day: Date) {

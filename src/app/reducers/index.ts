@@ -68,21 +68,25 @@ export function planningReducer(
 
 export const selectedWeek = (state: PlanningWidgetState) => state.selectedWeek;
 
-export const getWidgetState = (state: State) => state.srlWidget;
+export const getWidgetState = (state: State) => state;
 
 export const getWeeklyPlans = createSelector(
   getWidgetState,
-  widgetState => widgetState.weeklyPlans
+  widgetState => {
+    return widgetState.srlWidget.weeklyPlans;
+  }
 );
 
-export const getSelectedWeek = createSelector(getWidgetState, selectedWeek);
+export const getSelectedWeek = createSelector(getWidgetState, state => {
+  return state.srlWidget.selectedWeek;
+});
 
 export const getSelectedDay = createSelector(getWidgetState, state => {
-  return state.selectedDay;
+  return state.srlWidget.selectedDay;
 });
 
 export const getSelectedWeekday = createSelector(getWidgetState, state => {
-  return state.selectedDay.getDay();
+  return state.srlWidget.selectedDay.getDay();
 });
 
 export const getCurrentWeeklyPlan = createSelector(
@@ -102,7 +106,9 @@ export const getCurrentDailyPlan = createSelector(
   getWidgetState,
   getCurrentWeeklyPlan,
   (state, weeklyPlan) => {
-    console.log("Selected day: ", state.selectedDay);
-    return weeklyPlan.dailyPlans[WeekService.dayToIndex(state.selectedDay)];
+    if (weeklyPlan) {
+      return weeklyPlan.dailyPlans[WeekService.dayToIndex(state.srlWidget.selectedDay)];
+    }
+    return null;
   }
 );

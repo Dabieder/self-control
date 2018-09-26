@@ -7,11 +7,17 @@ import {
   getSelectedWeekday,
   getSelectedDay,
   getCurrentDailyPlan,
-  getWeeklyPlans
+  getWeeklyPlans,
+  getWidgetState,
+  PlanningWidgetState,
+  getSelectedWeek
 } from "../reducers";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import { WeeklyPlan, WeeklyPlans } from "../models/weekly-plan";
+import { WeekService } from "../week.service";
+import { WeeklyPlansUpdatedAction } from "../app.actions";
+import { WeeklyPlanningService } from "../weekly-planning.service";
 
 @Component({
   selector: "app-reason",
@@ -24,8 +30,14 @@ export class ReasonComponent implements OnInit, OnDestroy {
   @Input()
   dailyPlan: DailyPlan;
   weeklyPlans: WeeklyPlans;
+  week: string;
+  day: number;
 
-  constructor(private renderer: Renderer2, private store: Store<State>) {}
+  constructor(
+    private renderer: Renderer2,
+    private weeklyService: WeeklyPlanningService,
+    private store: Store<State>
+  ) {}
 
   ngOnInit() {
     this.activities = [
@@ -66,24 +78,36 @@ export class ReasonComponent implements OnInit, OnDestroy {
         this.dailyPlan = selectedDay;
 
         for (const activity of this.activities) {
-          const indexOf = this.dailyPlan.reasons.indexOf(activity);
+          const indexOf = this.dailyPlan.reasons.indexOf(activity.name);
           activity.selected = indexOf > -1;
         }
-      });
 
-      this.store
-      .pipe(
-        select(getWeeklyPlans),
-        takeUntil(this.unsubscribe$)
-      )
-      .subscribe((weeklyPlans: WeeklyPlans) => {
-        this.weeklyPlans = weeklyPlans;
-
-        for (const activity of this.activities) {
-          const indexOf = this.dailyPlan.reasons.indexOf(activity);
-          activity.selected = indexOf > -1;
-        }
+        console.log("Comparing Activities", this.activities);
+        console.log("With daily plan: ", this.dailyPlan.reasons);
       });
+    // this.store
+    // .pipe(
+    //   select(getSelectedDay, getSelectedWeek, getWeeklyPlans),
+    //   takeUntil
+    // )
+
+    // this.store
+    //   .pipe(
+    //     select(getWidgetState),
+    //     takeUntil(this.unsubscribe$)
+    //   )
+    //   .subscribe((state: PlanningWidgetState) => {
+    //     this.weeklyPlans = state.weeklyPlans;
+
+    //     // this.week = WeekService.toDictionaryKey(state.selectedWeek);
+    //     // this.day = WeekService.dayToIndex(state.selectedDay);
+    //     // this.dailyPlan = state.weeklyPlans[this.week][this.day];
+
+    //     // for (const activity of this.activities) {
+    //     //   const indexOf = this.dailyPlan.reasons.indexOf(activity);
+    //     //   activity.selected = indexOf > -1;
+    //     // }
+    //   });'
   }
 
   ngOnDestroy(): void {
@@ -92,15 +116,6 @@ export class ReasonComponent implements OnInit, OnDestroy {
   }
 
   onActivityToggled(activity: TrackingItem) {
-    console.log("Activity toggled: ", activity);
-    const name = activity.name;
-    const index = this.dailyPlan.reasons.indexOf(name);
-    if (index === -1 && activity.selected) {
-      this.dailyPlan.reasons.push(name);
-    } else if (index > -1 && !activity.selected) {
-      this.dailyPlan.reasons.splice(index, 1);
-    }
-
-    // this.store.dispatch(new DailyPlanChangedAction({dailyPlan}))
+    this.weeklyService.onActivityToggled(activity);
   }
 }
