@@ -2,8 +2,8 @@
   <p>
     How much of your learning goals did you reach today?
   </p>
-  <mat-slider class="mat-slider-wide" [(ngModel)]="dailyPlan.actualTimeCommitment" (input)="onSliderValueChange($event)" min="1" max="100"></mat-slider>
+  <mat-slider class="mat-slider-wide" [(ngModel)]="dailyPlan.actualHours" (input)="onSliderValueChange($event)" min="1" max="100"></mat-slider>
   <span>
-    {{dailyPlan.actualTimeCommitment}}%
+    {{dailyPlan.actualHours}}%
   </span>
 </div>

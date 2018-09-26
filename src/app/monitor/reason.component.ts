@@ -2,7 +2,12 @@ import { Component, OnInit, OnDestroy, Renderer2, Input } from "@angular/core";
 import { DailyPlan } from "../models/daily-plan";
 import { TrackingItem } from "../models/tracking-item";
 import { Store, select } from "@ngrx/store";
-import { State, getSelectedWeekday, getSelectedDay } from "../reducers";
+import {
+  State,
+  getSelectedWeekday,
+  getSelectedDay,
+  getCurrentDailyPlan
+} from "../reducers";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 
@@ -50,10 +55,10 @@ export class ReasonComponent implements OnInit, OnDestroy {
 
     this.store
       .pipe(
-        select(getSelectedDay),
+        select(getCurrentDailyPlan),
         takeUntil(this.unsubscribe$)
       )
-      .subscribe((selectedDay: Date) => {
+      .subscribe((selectedDay: DailyPlan) => {
         console.log("The Selected Date Changed to: ", selectedDay);
       });
   }

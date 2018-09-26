@@ -44,7 +44,19 @@
         },
         {
           "date": "2018-09-27",
-          "plannedHours": 2,
+          "plannedHours": 1,
+          "actualHours": 1.4,
+          "reasons": []
+        },
+        {
+          "date": "2018-09-28",
+          "plannedHours": 0,
+          "actualHours": 1.4,
+          "reasons": []
+        },
+        {
+          "date": "2018-09-29",
+          "plannedHours": 1,
           "actualHours": 1.4,
           "reasons": []
         }

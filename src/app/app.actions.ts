@@ -3,10 +3,12 @@ import { WeeklyPlan, WeeklyPlans } from "./models/weekly-plan";
 
 export enum PlanningWidgetActionTypes {
   SUBMIT_WEEKLY_PLAN = "[planningWidget] Submit Weekly Plan",
+  SUBMIT_WEEKLY_PLAN_SUCCESS = "[planningWidget] Submit Weekly Plan Success",
+  SUBMIT_WEEKLY_PLAN_FAILURE = "[planningWidget] Submit Weekly Plan Failure",
   SELECTED_WEEK_CHANGE = "[planningWidget] Selected Week Change",
   SELECTED_WEEKLY_PLAN_CHANGE = "[planningWidget] Selected Weekly Plan Change",
   WEEKLY_PLANS_UPDATED = "[planningWidget] Weekly Plans Updated",
-  SELECTED_DAY_CHANGE = "[planningWidget] Selected Day Change"
+  SELECTED_DAY_CHANGE = "[planningWidget] Selected Day Change",
 }
 
 export class SubmitWeeklyPlanAction implements Action {

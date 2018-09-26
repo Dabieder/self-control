@@ -1,18 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-srl-widget',
-  templateUrl: './srl-widget.component.html',
-  styleUrls: ['./srl-widget.component.scss']
+  selector: "app-srl-widget",
+  templateUrl: "./srl-widget.component.html",
+  styleUrls: ["./srl-widget.component.scss"]
 })
 export class SrlWidgetComponent implements OnInit {
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  submitData() {
-    
-  }
-
+  submitData() {}
 }

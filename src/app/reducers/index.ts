@@ -85,10 +85,6 @@ export const getSelectedWeekday = createSelector(getWidgetState, state => {
   return state.selectedDay.getDay();
 });
 
-export const getCurrentDailyPlan = createSelector(getWidgetState, state => {
-  return state.weeklyPlans[state.selectedDay.getDay()];
-});
-
 export const getCurrentWeeklyPlan = createSelector(
   getWidgetState,
   getWeeklyPlans,
@@ -99,5 +95,14 @@ export const getCurrentWeeklyPlan = createSelector(
       return plans[key];
     }
     return null;
+  }
+);
+
+export const getCurrentDailyPlan = createSelector(
+  getWidgetState,
+  getCurrentWeeklyPlan,
+  (state, weeklyPlan) => {
+    console.log("Selected day: ", state.selectedDay);
+    return weeklyPlan.dailyPlans[state.selectedDay.getDay()];
   }
 );
