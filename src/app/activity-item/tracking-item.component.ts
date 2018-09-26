@@ -15,7 +15,6 @@ export class TrackingItemComponent implements OnInit {
   ngOnInit() {}
 
   trackingItemClick(event: any) {
-    console.log("This, ", this);
     this.trackingItem.selected = !this.trackingItem.selected;
     this.activeChange.emit(this.trackingItem);
   }

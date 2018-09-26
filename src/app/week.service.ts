@@ -32,6 +32,10 @@ export class WeekService {
     return week.toISOString().substring(0, 10);
   }
 
+  public static dayToIndex(day: Date) {
+    return (day.getDay() - this.WeekStartOffset) % 6;
+  }
+
   public static getWeekForDay(day: Date): Date {
     const daysToSubtract = (day.getDay() - this.WeekStartOffset) % 6;
     const startDate = new Date(day.setDate(day.getDate() - daysToSubtract));

@@ -1,5 +1,6 @@
 import { Action } from "@ngrx/store";
 import { WeeklyPlan, WeeklyPlans } from "./models/weekly-plan";
+import { DailyPlan } from "./models/daily-plan";
 
 export enum PlanningWidgetActionTypes {
   SUBMIT_WEEKLY_PLAN = "[planningWidget] Submit Weekly Plan",
@@ -9,6 +10,7 @@ export enum PlanningWidgetActionTypes {
   SELECTED_WEEKLY_PLAN_CHANGE = "[planningWidget] Selected Weekly Plan Change",
   WEEKLY_PLANS_UPDATED = "[planningWidget] Weekly Plans Updated",
   SELECTED_DAY_CHANGE = "[planningWidget] Selected Day Change",
+  DAILY_PLAN_UPDATED = "[planningWidget] Daily Plan Updated"
 }
 
 export class SubmitWeeklyPlanAction implements Action {
@@ -41,9 +43,16 @@ export class WeeklyPlansUpdatedAction implements Action {
   constructor(public payload: { weeklyPlans: WeeklyPlans }) {}
 }
 
+export class DailyPlanUpdatedAction implements Action {
+  public readonly type = PlanningWidgetActionTypes.DAILY_PLAN_UPDATED;
+
+  constructor(public payload: { dailyPlan: DailyPlan }) {}
+}
+
 export type PlanningWidgetActionsUnion =
   | SubmitWeeklyPlanAction
   | SelectedDayChangeAction
   | SelectedWeekChangeAction
   | SelectedWeeklyPlanChangeAction
-  | WeeklyPlansUpdatedAction;
+  | WeeklyPlansUpdatedAction
+  | DailyPlanUpdatedAction;

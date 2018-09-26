@@ -6,10 +6,12 @@ import {
   State,
   getSelectedWeekday,
   getSelectedDay,
-  getCurrentDailyPlan
+  getCurrentDailyPlan,
+  getWeeklyPlans
 } from "../reducers";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
+import { WeeklyPlan, WeeklyPlans } from "../models/weekly-plan";
 
 @Component({
   selector: "app-reason",
@@ -21,6 +23,7 @@ export class ReasonComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
   @Input()
   dailyPlan: DailyPlan;
+  weeklyPlans: WeeklyPlans;
 
   constructor(private renderer: Renderer2, private store: Store<State>) {}
 
@@ -60,16 +63,32 @@ export class ReasonComponent implements OnInit, OnDestroy {
       )
       .subscribe((selectedDay: DailyPlan) => {
         console.log("The Selected Date Changed to: ", selectedDay);
+        this.dailyPlan = selectedDay;
+
+        for (const activity of this.activities) {
+          const indexOf = this.dailyPlan.reasons.indexOf(activity);
+          activity.selected = indexOf > -1;
+        }
+      });
+
+      this.store
+      .pipe(
+        select(getWeeklyPlans),
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe((weeklyPlans: WeeklyPlans) => {
+        this.weeklyPlans = weeklyPlans;
+
+        for (const activity of this.activities) {
+          const indexOf = this.dailyPlan.reasons.indexOf(activity);
+          activity.selected = indexOf > -1;
+        }
       });
   }
 
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-  }
-
-  debug() {
-    console.log("Plan Reasons: ", this.dailyPlan.reasons);
   }
 
   onActivityToggled(activity: TrackingItem) {
@@ -81,5 +100,7 @@ export class ReasonComponent implements OnInit, OnDestroy {
     } else if (index > -1 && !activity.selected) {
       this.dailyPlan.reasons.splice(index, 1);
     }
+
+    // this.store.dispatch(new DailyPlanChangedAction({dailyPlan}))
   }
 }

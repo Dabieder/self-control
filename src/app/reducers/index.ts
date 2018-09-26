@@ -103,6 +103,6 @@ export const getCurrentDailyPlan = createSelector(
   getCurrentWeeklyPlan,
   (state, weeklyPlan) => {
     console.log("Selected day: ", state.selectedDay);
-    return weeklyPlan.dailyPlans[state.selectedDay.getDay()];
+    return weeklyPlan.dailyPlans[WeekService.dayToIndex(state.selectedDay)];
   }
 );
