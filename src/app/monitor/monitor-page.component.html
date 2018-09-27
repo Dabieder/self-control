@@ -1,5 +1,5 @@
 <div class="container">
-
+    <!-- 
     <mat-tab-group [(selectedIndex)]="selectedDay">
         <mat-tab class="mat-tab-label-narrow">
             <ng-template mat-tab-label>
@@ -36,15 +36,39 @@
                 <div (click)="daySelect(6)">Sun</div>
             </ng-template>
         </mat-tab>
-    </mat-tab-group>
+    </mat-tab-group> -->
+
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-primary" (click)="daySelect(0)" [ngClass]="selectedDay === 0 ? 'focus active ' : ''">
+            <input type="radio" (click)="daySelect(0)" name=" options " id="option1 " autocomplete="off " (checked)="selectedDay===0 ">            Mon
+        </label>
+        <label class="btn btn-primary" (click)="daySelect(1)" [ngClass]="selectedDay === 1 ? 'focus active ' : ''">
+            <input type="radio" (click)="daySelect(1)" name="options " id="option2 " autocomplete="off" (checked)="selectedDay===1">            Tue
+        </label>
+        <label class="btn btn-primary" (click)="daySelect(2)" [ngClass]="selectedDay === 2 ? 'focus active ' : ''">
+            <input type="radio" (click)="daySelect(2)" name="options " id="option3 " autocomplete="off"> Wed
+        </label>
+        <label class="btn btn-primary" (click)="daySelect(3)" [ngClass]="selectedDay === 3 ? 'focus active ' : ''">
+            <input type="radio" name="options " id="option3 " autocomplete="off"> Thu
+        </label>
+        <label class="btn btn-primary" (click)="daySelect(4)" [ngClass]="selectedDay === 4 ? 'focus active ' : ''">
+            <input type="radio" name="options " id="option4" autocomplete="off"> Fri
+        </label>
+        <label class="btn btn-primary" (click)="daySelect(5)" [ngClass]="selectedDay === 5 ? 'focus active ' : ''">
+            <input type="radio" name="options " id="option5" autocomplete="off"> Sat
+        </label>
+        <label class="btn btn-primary" (click)="daySelect(6)" [ngClass]="selectedDay === 6 ? 'focus active ' : ''">
+            <input type="radio" name="options " id="option6" autocomplete="off"> Sun
+        </label>
+    </div>
 
     <span>{{selectedDay}}</span>
 
     <mat-divider></mat-divider>
-    <app-rating-page [dailyPlan]="weeklyPlan.dailyPlans[selectedDay]"></app-rating-page>
+    <app-rating-page [dailyPlan]="weeklyPlan.dailyPlans[selectedDay] "></app-rating-page>
     <mat-divider></mat-divider>
-    <app-reason [dailyPlan]="weeklyPlan.dailyPlans[selectedDay]"></app-reason>
+    <app-reason [dailyPlan]="weeklyPlan.dailyPlans[selectedDay] "></app-reason>
 
 
-    <!-- <button class="btn-block fixed-bottom btn-primary" (click)="submitMonitor()" color="primary">Submit</button> -->
+    <!-- <button class="btn-block fixed-bottom btn-primary " (click)="submitMonitor() " color="primary ">Submit</button> -->
 </div>

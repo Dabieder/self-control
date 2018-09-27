@@ -14,10 +14,10 @@ export class LearningGoalChartComponent implements OnInit {
     }
   };
   public barChartLabels: string[] = [
-    "2006",
-    "2007",
-    "2008",
-    "2009",
+    "24.09. - 30.09.",
+    "01.10. - 07.10.",
+    "08.10. - 14.10.",
+    "15.10. - 21.10.",
     "2010",
     "2011",
     "2012"
