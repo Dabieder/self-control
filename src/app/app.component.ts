@@ -2,6 +2,7 @@ import { Component, OnDestroy } from "@angular/core";
 import { WeeklyPlanningService } from "./weekly-planning.service";
 import { State } from "./reducers";
 import { Store } from "@ngrx/store";
+import * as moment from "moment";
 
 @Component({
   selector: "app-root",
@@ -16,6 +17,7 @@ export class AppComponent implements OnDestroy {
     private store: Store<State>
   ) {
     this.weeklyPlanningService.initialize();
+    this.initMoment();
   }
 
   ngOnDestroy(): void {
@@ -24,5 +26,9 @@ export class AppComponent implements OnDestroy {
 
   submit() {
     console.log("submitting everything");
+  }
+
+  initMoment() {
+    moment.locale("de");
   }
 }

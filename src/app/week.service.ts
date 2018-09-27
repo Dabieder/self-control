@@ -34,13 +34,18 @@ export class WeekService {
   }
 
   public static dayToIndex(day: Date) {
-    return (day.getDay() - this.WeekStartOffset) % 6;
+    return moment(day).weekday();
+  // const remainder = (day.getDay() - this.WeekStartOffset) % 6;
+  //   if (remainder < 0) {
+  //     return 7 + remainder;
+  //   }
+  //   return remainder;
   }
 
   public static getWeekForDay(day: Date): Date {
     const daysToSubtract = (day.getDay() - this.WeekStartOffset) % 6;
     const startDate = new Date(day.setDate(day.getDate() - daysToSubtract));
-    startDate.setHours(1, 1, 1, 1);
+    startDate.setHours(12, 12, 12, 12);
     return startDate;
   }
 
