@@ -11,7 +11,8 @@ import {
   PlanningWidgetActionTypes,
   SelectedWeekChangeAction,
   WeeklyPlansUpdatedAction,
-  SelectedDayChangeAction
+  SelectedDayChangeAction,
+  SubmitStatementErrorAction
 } from "../app.actions";
 import { WeeklyPlan, WeeklyPlans } from "../models/weekly-plan";
 import { WeekService } from "../week.service";
@@ -24,13 +25,15 @@ export interface PlanningWidgetState {
   selectedWeek: Date;
   selectedDay: Date;
   weeklyPlans: WeeklyPlans;
+  error: any;
 }
 
 const todayDate = new Date(Date.now());
 const initialState: PlanningWidgetState = {
   selectedWeek: WeekService.getWeekForDay(todayDate),
   selectedDay: todayDate,
-  weeklyPlans: {}
+  weeklyPlans: {},
+  error: null
 };
 
 export const reducers: ActionReducerMap<State> = {
@@ -60,6 +63,11 @@ export function planningReducer(
       return {
         ...state,
         selectedDay: (<SelectedDayChangeAction>action).payload.selectedDay
+      };
+    case PlanningWidgetActionTypes.SUBMIT_STATEMENT_ERROR:
+      return {
+        ...state,
+        error: (<SubmitStatementErrorAction>action).payload.error
       };
     default:
       return state;

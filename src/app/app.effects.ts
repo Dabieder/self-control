@@ -4,44 +4,48 @@ import { SrlWidgetXapiService } from "./srl-widget-xapi.service";
 import {
   PlanningWidgetActionTypes,
   SelectedDayChangeAction,
-  SubmitStatementAction
+  SubmitStatementAction,
+  SubmitStatementSuccessAction,
+  SubmitStatementErrorAction
 } from "./app.actions";
 import {
   catchError,
   map,
   tap,
-  switchMap,
   distinctUntilChanged,
-  debounceTime
+  debounceTime,
+  switchMap,
+  concatMap
 } from "rxjs/operators";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { WeekService } from "./week.service";
+import { Action } from "@ngrx/store";
 
 @Injectable()
 export class AppEffects {
   constructor(
-    private actions$: Actions,
+    private actions$: Actions<Action>,
     private xapiService: SrlWidgetXapiService
   ) {}
 
-  // @Effect()
-  // public changeDay: Observable<Action> = this.actions$.pipe(
-  //   ofType(PlanningWidgetActionTypes.SELECTED_DAY_CHANGE),
-  //   distinctUntilChanged(),
-  //   debounceTime(500),
-  //   switchMap(payload => {
-  //     const statement = this.xapiService.getNavigationStatement(
-  //       "123",
-  //       "Day Change",
-  //       "statement"
-  //     );
-  //     return new SubmitStatementAction({ statement: statement });
+  @Effect()
+  public changeDay = this.actions$
+    .ofType<SelectedDayChangeAction>(
+      PlanningWidgetActionTypes.SELECTED_DAY_CHANGE
+    )
+    .pipe(
+      map(action => action.payload),
+      concatMap(payload => {
+        const statement = this.xapiService.getNavigationStatement(
+          "123",
+          "Day Change",
+          WeekService.toDictionaryKey(payload.selectedDay)
+        );
+        return this.xapiService.submitStatement(statement).pipe(
+          map(res => new SubmitStatementSuccessAction()),
+          catchError(error => of(new SubmitStatementErrorAction({ error })))
+        );
+      })
+    );
 
-  //     // this.xapiService
-  //     //   .submitStatement(statement)
-  //     //   .pipe(
-  //     //     map(res => new )
-  //     //   )
-  //   })
-  // );
 }

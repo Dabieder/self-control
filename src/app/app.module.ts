@@ -27,6 +27,8 @@ import { AppEffects } from "./app.effects";
 import { WeekSelectionComponent } from "./planning/week-selection.component";
 import { SrlWidgetComponent } from "./srl-widget/srl-widget.component";
 import { WeekdaySelectionComponent } from "./monitor/weekday-selection.component";
+import { ApiService } from "./api.service";
+import { HttpClientModule } from "@angular/common/http";
 
 const routes: Routes = [
   {
@@ -59,6 +61,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register("/ngsw-worker.js", {
@@ -75,7 +78,7 @@ const routes: Routes = [
     EffectsModule.forRoot([AppEffects])
   ],
 
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

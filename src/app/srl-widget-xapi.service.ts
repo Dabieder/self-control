@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "selenium-webdriver/http";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { ApiService } from "./api.service";
 
 @Injectable({
@@ -10,7 +10,8 @@ export class SrlWidgetXapiService {
   constructor(private api: ApiService) {}
 
   submitStatement(statement: any): Observable<any> {
-    return this.api.post("/lad-backend/courses/1/", statement);
+    return of(true);
+    // return this.api.post("/lad-backend/courses/1/", statement);
   }
 
   getNavigationStatement(

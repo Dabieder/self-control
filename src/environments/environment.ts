@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://localhost:3000/api',
+  api_url: 'http://tlacx311.edutec.guru/lrs-backend/resources/xapi/statements',
   default_user: {
     "email": "a@b.c",
     "password": "1234"

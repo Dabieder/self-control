@@ -11,7 +11,9 @@ export enum PlanningWidgetActionTypes {
   WEEKLY_PLANS_UPDATED = "[planningWidget] Weekly Plans Updated",
   SELECTED_DAY_CHANGE = "[planningWidget] Selected Day Change",
   DAILY_PLAN_UPDATED = "[planningWidget] Daily Plan Updated",
-  SUBMIT_STATEMENT = "[planningWidget] Submit Statement"
+  SUBMIT_STATEMENT = "[planningWidget] Submit Statement",
+  SUBMIT_STATEMENT_SUCCESS = "[planningWidget] Submit Statement Success",
+  SUBMIT_STATEMENT_ERROR = "[planningWidget] Submit Statement Error"
 }
 
 export class SubmitWeeklyPlanAction implements Action {
@@ -56,10 +58,25 @@ export class SubmitStatementAction implements Action {
   constructor(public payload: { statement: any }) {}
 }
 
+export class SubmitStatementSuccessAction implements Action {
+  public readonly type = PlanningWidgetActionTypes.SUBMIT_STATEMENT_SUCCESS;
+
+  constructor(public payload?: any) {}
+}
+
+export class SubmitStatementErrorAction implements Action {
+  public readonly type = PlanningWidgetActionTypes.SUBMIT_STATEMENT_ERROR;
+
+  constructor(public payload: { error: any }) {}
+}
+
 export type PlanningWidgetActionsUnion =
   | SubmitWeeklyPlanAction
   | SelectedDayChangeAction
   | SelectedWeekChangeAction
   | SelectedWeeklyPlanChangeAction
   | WeeklyPlansUpdatedAction
-  | DailyPlanUpdatedAction;
+  | DailyPlanUpdatedAction
+  | SubmitStatementAction
+  | SubmitStatementSuccessAction
+  | SubmitStatementErrorAction;
