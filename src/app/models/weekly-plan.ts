@@ -1,6 +1,6 @@
 import { Time } from "@angular/common";
 import { DailyPlan } from "./daily-plan";
-import { WeekService } from "../week.service";
+import { WeekService } from "../services/week.service";
 
 export class WeeklyPlan {
   public weekStartDate: Date;

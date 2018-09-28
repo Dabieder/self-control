@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { WeekService } from "../week.service";
+import { WeekService } from "../services/week.service";
 import { Store } from "@ngrx/store";
 import { PlanningWidgetState, State } from "../reducers";
 import {
   SelectedWeekChangeAction,
   WeeklyPlansUpdatedAction,
   SelectedWeeklyPlanChangeAction
-} from "../app.actions";
-import { WeeklyPlanningService } from "../weekly-planning.service";
+} from "../services/app.actions";
+import { WeeklyPlanningService } from "../services/weekly-planning.service";
 import { WeeklyPlan, WeeklyPlans } from "../models/weekly-plan";
 
 @Component({

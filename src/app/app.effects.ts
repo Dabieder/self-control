@@ -4,7 +4,7 @@ import {
   SrlWidgetXapiService,
   ObjectIds,
   ItemTypes
-} from "./srl-widget-xapi.service";
+} from "./services/srl-widget-xapi.service";
 import {
   PlanningWidgetActionTypes,
   SelectedDayChangeAction,
@@ -15,7 +15,7 @@ import {
   RequestDataFromBackendAction,
   RequestDataFromBackendSuccessAction,
   RequestDataFromBackendErrorAction
-} from "./app.actions";
+} from "./services/app.actions";
 import {
   catchError,
   map,
@@ -26,9 +26,9 @@ import {
   concatMap
 } from "rxjs/operators";
 import { Observable, of } from "rxjs";
-import { WeekService } from "./week.service";
+import { WeekService } from "./services/week.service";
 import { Action } from "@ngrx/store";
-import { ApiService } from "./api.service";
+import { ApiService } from "./services/api.service";
 
 @Injectable()
 export class AppEffects {

@@ -1,4 +1,4 @@
-import { WeekService } from "../week.service";
+import { WeekService } from "../services/week.service";
 
 export enum WeekDays {
   Monday = 0,

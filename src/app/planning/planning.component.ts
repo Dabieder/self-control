@@ -4,7 +4,7 @@ import { Store, select } from "@ngrx/store";
 import { State, getCurrentWeeklyPlan } from "../reducers";
 import { map, take } from "rxjs/operators";
 import { WeeklyPlan } from "../models/weekly-plan";
-import { SubmitWeeklyPlanAction } from "../app.actions";
+import { SubmitWeeklyPlanAction } from "../services/app.actions";
 import { Observable } from "rxjs";
 
 @Component({

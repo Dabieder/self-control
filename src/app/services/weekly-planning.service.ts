@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { takeUntil } from "rxjs/operators";
-import { WeeklyPlan, WeeklyPlans } from "./models/weekly-plan";
+import { WeeklyPlan, WeeklyPlans } from "../models/weekly-plan";
 import { WeekService } from "./week.service";
-import { TrackingItem } from "./models/tracking-item";
+import { TrackingItem } from "../models/tracking-item";
 import { Subject } from "rxjs";
 import {
   State,
@@ -14,8 +14,8 @@ import {
   getWidgetState,
   PlanningWidgetState,
   getSelectedWeek
-} from "./reducers";
-import { DailyPlan } from "./models/daily-plan";
+} from "../reducers";
+import { DailyPlan } from "../models/daily-plan";
 import { WeeklyPlansUpdatedAction } from "./app.actions";
 
 @Injectable({

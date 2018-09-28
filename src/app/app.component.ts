@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { WeeklyPlanningService } from "./weekly-planning.service";
+import { WeeklyPlanningService } from "./services/weekly-planning.service";
 import { State } from "./reducers";
 import { Store } from "@ngrx/store";
 import * as moment from "moment";
-import { RequestDataFromBackendAction } from "./app.actions";
+import { RequestDataFromBackendAction } from "./services/app.actions";
 
 @Component({
   selector: "app-root",

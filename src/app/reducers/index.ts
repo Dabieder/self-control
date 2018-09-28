@@ -13,9 +13,9 @@ import {
   WeeklyPlansUpdatedAction,
   SelectedDayChangeAction,
   SubmitStatementErrorAction
-} from "../app.actions";
+} from "../services/app.actions";
 import { WeeklyPlan, WeeklyPlans } from "../models/weekly-plan";
-import { WeekService } from "../week.service";
+import { WeekService } from "../services/week.service";
 
 export interface State {
   srlWidget: PlanningWidgetState;

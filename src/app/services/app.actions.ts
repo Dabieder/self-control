@@ -1,6 +1,6 @@
 import { Action } from "@ngrx/store";
-import { WeeklyPlan, WeeklyPlans } from "./models/weekly-plan";
-import { DailyPlan } from "./models/daily-plan";
+import { WeeklyPlan, WeeklyPlans } from "../models/weekly-plan";
+import { DailyPlan } from "../models/daily-plan";
 
 export enum PlanningWidgetActionTypes {
   SUBMIT_WEEKLY_PLAN = "[planningWidget] Submit Weekly Plan",

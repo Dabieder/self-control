@@ -5,7 +5,7 @@ import { MockStore } from "../../testing/utils";
 import { State, PlanningWidgetState } from "../reducers";
 import { Store } from "@ngrx/store";
 import { WeeklyPlan, WeeklyPlans } from "../models/weekly-plan";
-import { WeekService } from "../week.service";
+import { WeekService } from "../services/week.service";
 
 describe("MonitorPageComponent", () => {
   let store: MockStore<PlanningWidgetState>;

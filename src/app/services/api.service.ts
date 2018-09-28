@@ -20,7 +20,7 @@ import { Injectable } from "@angular/core";
 import { HttpHeaders, HttpClient, HttpParams } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
-import { environment } from "../environments/environment";
+import { environment } from "../../environments/environment";
 
 @Injectable()
 // Taken from https://github.com/gothinkster/angular-realworld-example-app

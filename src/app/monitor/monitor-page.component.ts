@@ -3,10 +3,10 @@ import { Store, select } from "@ngrx/store";
 import { State, getCurrentWeeklyPlan } from "../reducers";
 import { WeekDay } from "@angular/common";
 import { WeeklyPlan } from "../models/weekly-plan";
-import { WeekService } from "../week.service";
+import { WeekService } from "../services/week.service";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
-import { SelectedDayChangeAction } from "../app.actions";
+import { SelectedDayChangeAction } from "../services/app.actions";
 
 @Component({
   selector: "app-monitor-page",

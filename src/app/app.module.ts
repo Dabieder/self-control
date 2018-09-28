@@ -27,7 +27,7 @@ import { AppEffects } from "./app.effects";
 import { WeekSelectionComponent } from "./planning/week-selection.component";
 import { SrlWidgetComponent } from "./srl-widget/srl-widget.component";
 import { WeekdaySelectionComponent } from "./monitor/weekday-selection.component";
-import { ApiService } from "./api.service";
+import { ApiService } from "./services/api.service";
 import { HttpClientModule } from "@angular/common/http";
 
 const routes: Routes = [

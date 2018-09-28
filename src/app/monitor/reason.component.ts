@@ -2,22 +2,11 @@ import { Component, OnInit, OnDestroy, Renderer2, Input } from "@angular/core";
 import { DailyPlan } from "../models/daily-plan";
 import { TrackingItem } from "../models/tracking-item";
 import { Store, select } from "@ngrx/store";
-import {
-  State,
-  getSelectedWeekday,
-  getSelectedDay,
-  getCurrentDailyPlan,
-  getWeeklyPlans,
-  getWidgetState,
-  PlanningWidgetState,
-  getSelectedWeek
-} from "../reducers";
+import { State, getCurrentDailyPlan } from "../reducers";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
-import { WeeklyPlan, WeeklyPlans } from "../models/weekly-plan";
-import { WeekService } from "../week.service";
-import { WeeklyPlansUpdatedAction } from "../app.actions";
-import { WeeklyPlanningService } from "../weekly-planning.service";
+import { WeeklyPlans } from "../models/weekly-plan";
+import { WeeklyPlanningService } from "../services/weekly-planning.service";
 
 @Component({
   selector: "app-reason",
