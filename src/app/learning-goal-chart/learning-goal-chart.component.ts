@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
+import { WeeklyPlans } from "../models/weekly-plan";
 
 @Component({
   selector: "app-learning-goal-chart",
@@ -6,6 +7,9 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./learning-goal-chart.component.scss"]
 })
 export class LearningGoalChartComponent implements OnInit {
+  @Input()
+  weeklyPlans: WeeklyPlans;
+
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true,
@@ -17,17 +21,14 @@ export class LearningGoalChartComponent implements OnInit {
     "24.09. - 30.09.",
     "01.10. - 07.10.",
     "08.10. - 14.10.",
-    "15.10. - 21.10.",
-    "2010",
-    "2011",
-    "2012"
+    "15.10. - 21.10."
   ];
   public barChartType = "bar";
   public barChartLegend = true;
 
   public barChartData: any[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: "Set Goals" },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: "Result" }
+    { data: [65, 59, 80, 81], label: "Set Goals" },
+    { data: [28, 48, 40, 19], label: "Result" }
   ];
 
   // events
@@ -38,6 +39,8 @@ export class LearningGoalChartComponent implements OnInit {
   public chartHovered(e: any): void {
     console.log(e);
   }
+
+  public fillFromWeeklyPlans(numWeeks: number) {}
 
   public randomize(): void {
     // Only Change 3 values

@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
+import { WeeklyPlans } from "../models/weekly-plan";
 
 @Component({
   selector: "app-srl-chart",
@@ -6,6 +7,8 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./srl-chart.component.scss"]
 })
 export class SrlChartComponent implements OnInit {
+  weeklyPlans: WeeklyPlans;
+
   // Radar
   public radarChartLabels: string[] = [
     "Goal Setting",
