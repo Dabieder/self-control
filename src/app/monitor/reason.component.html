@@ -1,5 +1,6 @@
-<span>What kept you from reaching your goal?</span>
-<div class="content-wrapper">
+<div class="text-center">
+  What kept you from reaching your goal?</div>
+<div class="content-wrapper pt-4">
   <div class="activities">
     <div *ngFor="let activity of activities" class="activity-button">
       <app-tracking-item (activeChange)="onActivityToggled($event)" [trackingItem]="activity"></app-tracking-item>

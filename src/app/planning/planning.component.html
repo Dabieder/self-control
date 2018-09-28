@@ -1,19 +1,19 @@
-<div class="container" *ngIf="weeklyPlan$ | async as plan">
-  <div class="col-md-8 offset-md-2">
-    <p>
+<div class="container pt-4" *ngIf="weeklyPlan$ | async as plan">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-md-8 offset-md-2 descriptive-header text-center">
       How many hours do you want to invest <b>this week</b>?
-    </p>
-    <mat-form-field>
-      <input type="tel" placeholder="Hours" [(ngModel)]="plan.hoursPerWeek" min="0" max="168" matInput>
+    </div>
+    <mat-form-field class="weekly-hours-input">
+      <input type="tel" onClick="this.select();" placeholder="..." [(ngModel)]="plan.hoursPerWeek" min="0" max="168" matInput>
     </mat-form-field>
 
   </div>
-  <div class="col-md-8 offset-md-2">
-    <span>
+  <div class="col-md-8 offset-md-2 ">
+    <div class="descriptive-header mb-4 text-center">
       How much time do you want to invest <b>each day</b>?
-    </span>
+    </div>
 
-    <div class="container">
+    <div class="container mt-4">
       <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Mon" [dailyPlan]="plan.dailyPlans[0]"></app-weekday>
       <app-weekday name="Tue" [dailyPlan]="plan.dailyPlans[1]"></app-weekday>
       <app-weekday name="Wed" [dailyPlan]="plan.dailyPlans[2]"></app-weekday>

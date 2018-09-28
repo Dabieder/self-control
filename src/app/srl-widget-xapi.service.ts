@@ -21,7 +21,7 @@ export class SrlWidgetXapiService {
   submitStatement(statement: any): Observable<any> {
     // return of(true);
     console.log("Submitting xAPI statement: ", statement);
-    return this.api.post("", statement);
+    return this.api.post("/resources/xapi/statements", statement);
   }
 
   getNavigationStatement(
