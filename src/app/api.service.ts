@@ -33,6 +33,7 @@ export class ApiService {
       "Content-Type",
       "application/json; charset=utf-8"
     );
+    this.headers.append('Access-Control-Allow-Origin', '*');
   }
 
   private formatErrors(error: Response | any) {

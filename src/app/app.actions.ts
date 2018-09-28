@@ -13,7 +13,10 @@ export enum PlanningWidgetActionTypes {
   DAILY_PLAN_UPDATED = "[planningWidget] Daily Plan Updated",
   SUBMIT_STATEMENT = "[planningWidget] Submit Statement",
   SUBMIT_STATEMENT_SUCCESS = "[planningWidget] Submit Statement Success",
-  SUBMIT_STATEMENT_ERROR = "[planningWidget] Submit Statement Error"
+  SUBMIT_STATEMENT_ERROR = "[planningWidget] Submit Statement Error",
+  REQUEST_DATA_FROM_BACKEND = "[planningWidget] Request Data From Backend",
+  REQUEST_DATA_FROM_BACKEND_SUCCESS = "[planningWidget] Request Data From Backend Success",
+  REQUEST_DATA_FROM_BACKEND_ERROR = "[planningWidget] Request Data From Backend Error"
 }
 
 export class SubmitWeeklyPlanAction implements Action {
@@ -68,6 +71,24 @@ export class SubmitStatementErrorAction implements Action {
   public readonly type = PlanningWidgetActionTypes.SUBMIT_STATEMENT_ERROR;
 
   constructor(public payload: { error: any }) {}
+}
+
+export class RequestDataFromBackendAction implements Action {
+  public readonly type = PlanningWidgetActionTypes.REQUEST_DATA_FROM_BACKEND;
+
+  constructor(public payload?: any) {}
+}
+
+export class RequestDataFromBackendSuccessAction implements Action {
+  public readonly type = PlanningWidgetActionTypes.REQUEST_DATA_FROM_BACKEND_SUCCESS;
+
+  constructor(public payload?: any) {}
+}
+
+export class RequestDataFromBackendErrorAction implements Action {
+  public readonly type = PlanningWidgetActionTypes.REQUEST_DATA_FROM_BACKEND_ERROR;
+
+  constructor(public payload?: any) {}
 }
 
 export type PlanningWidgetActionsUnion =
