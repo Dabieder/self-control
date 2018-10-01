@@ -14,7 +14,8 @@ import { WeeklyPlanningService } from "../services/weekly-planning.service";
   styleUrls: ["./reason.component.css"]
 })
 export class ReasonComponent implements OnInit, OnDestroy {
-  public activities: any;
+  public reasonsNegative: any;
+  public reasonsPositive: any;
   private unsubscribe$: Subject<void> = new Subject<void>();
   @Input()
   dailyPlan: DailyPlan;
@@ -29,7 +30,7 @@ export class ReasonComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.activities = [
+    this.reasonsNegative = [
       {
         name: "Other responsibilities",
         icon: "face",
@@ -57,6 +58,29 @@ export class ReasonComponent implements OnInit, OnDestroy {
       }
     ];
 
+    this.reasonsPositive = [
+      {
+        name: "Good Time Management",
+        icon: "group",
+        selected: false
+      },
+      {
+        name: "The tasks were easy",
+        icon: "settings_input_antenna",
+        selected: false
+      },
+      {
+        name: "Productive Collaboration",
+        icon: "group",
+        selected: false
+      },
+      {
+        name: "The tasks were well-suited for me",
+        icon: "contact_support",
+        selected: false
+      }
+    ];
+
     this.store
       .pipe(
         select(getCurrentDailyPlan),
@@ -66,12 +90,12 @@ export class ReasonComponent implements OnInit, OnDestroy {
         console.log("The Selected Date Changed to: ", selectedDay);
         this.dailyPlan = selectedDay;
 
-        for (const activity of this.activities) {
+        for (const activity of this.reasonsNegative) {
           const indexOf = this.dailyPlan.reasons.indexOf(activity.name);
           activity.selected = indexOf > -1;
         }
 
-        console.log("Comparing Activities", this.activities);
+        console.log("Comparing Activities", this.reasonsNegative);
         console.log("With daily plan: ", this.dailyPlan.reasons);
       });
     // this.store

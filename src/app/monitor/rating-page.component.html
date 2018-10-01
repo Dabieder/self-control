@@ -2,8 +2,15 @@
   <p>
     How much of your learning goals did you reach today?
   </p>
-  <mat-slider class="mat-slider-wide" [(ngModel)]="dailyPlan.actualHours" (input)="onSliderValueChange($event)" min="1" max="100"></mat-slider>
-  <span>
-    {{dailyPlan.actualHours}}%
-  </span>
+  <mat-slider class="mat-slider-wide" [(ngModel)]="dailyPlan.actualHours" (input)="onSliderValueChange($event)" min="1"
+    max="100"></mat-slider>
+  <div>
+    <span>
+      {{dailyPlan.actualHours}} %
+    </span>
+  </div>
+  <div>
+    <button class="btn btn-block btn-primary" data-toggle="button" (click)="overachieve()" color="primary">More
+      than 100%</button>
+  </div>
 </div>

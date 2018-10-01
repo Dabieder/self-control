@@ -21,4 +21,8 @@ export class RatingPageComponent implements OnInit {
     this.goalDisplay = event.value;
     this.dailyPlan.actualHours = event.value;
   }
+
+  overachieve() {
+    this.goalDisplay = 100;
+  }
 }

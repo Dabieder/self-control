@@ -12,7 +12,7 @@ export class SrlChartComponent implements OnInit {
   // Radar
   public radarChartLabels: string[] = [
     "Goal Setting",
-    "Time Management",
+   "Time Management",
     "Help Seeking",
     "Task Strategies",
     "Self-Evaluation"
