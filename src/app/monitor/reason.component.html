@@ -2,7 +2,7 @@
   What kept you from reaching your goal?</div>
 <div class="content-wrapper pt-4">
   <div class="activities">
-    <div *ngFor="let activity of activities" class="activity-button">
+    <div *ngFor="let activity of currentReasons" class="activity-button">
       <app-tracking-item (activeChange)="onActivityToggled($event)" [trackingItem]="activity"></app-tracking-item>
     </div>
   </div>

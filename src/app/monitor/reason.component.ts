@@ -16,6 +16,7 @@ import { WeeklyPlanningService } from "../services/weekly-planning.service";
 export class ReasonComponent implements OnInit, OnDestroy {
   public reasonsNegative: any;
   public reasonsPositive: any;
+  public currentReasons: any;
   private unsubscribe$: Subject<void> = new Subject<void>();
   @Input()
   dailyPlan: DailyPlan;
@@ -80,6 +81,8 @@ export class ReasonComponent implements OnInit, OnDestroy {
         selected: false
       }
     ];
+
+    this.currentReasons = this.reasonsNegative;
 
     this.store
       .pipe(
