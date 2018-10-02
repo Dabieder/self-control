@@ -1,14 +1,13 @@
 <div class="container pt-4" *ngIf="weeklyPlan$ | async as plan">
-  <div class="row align-items-center justify-content-center">
-    <div class="col-md-8 offset-md-2 descriptive-header text-center">
-      How many hours do you want to invest <b>this week</b>?
-    </div>
-    <mat-form-field class="weekly-hours-input">
-      <input type="tel" onClick="this.select();" placeholder="..." [(ngModel)]="plan.hoursPerWeek" min="0" max="168" matInput>
-    </mat-form-field>
 
+  <div class="row align-items-center justify-content-center">
+
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="My learning goal for this week is..."></textarea>
+    </mat-form-field>
   </div>
-  <div class="col-md-8 offset-md-2 ">
+
+  <div class="col-md-8 offset-md-2 pt-4">
     <div class="descriptive-header mb-4 text-center">
       How much time do you want to invest <b>each day</b>?
     </div>
@@ -25,6 +24,16 @@
 
   </div>
 
+
+  <div class="row align-items-center justify-content-center">
+    <div class="col-md-8 offset-md-2 descriptive-header text-center">
+      How many hours do you want to invest <b>this week</b>?
+    </div>
+    <mat-form-field class="weekly-hours-input">
+      <input type="tel" onClick="this.select();" placeholder="..." [(ngModel)]="plan.hoursPerWeek" min="0" max="168"
+        matInput>
+    </mat-form-field>
+  </div>
   <!-- <button mat-raised-button class="btn-block" (click)="submitPlan()" color="primary">Submit</button> -->
 
 </div>

@@ -26,6 +26,7 @@ export interface PlanningWidgetState {
   selectedDay: Date;
   weeklyPlans: WeeklyPlans;
   error: any;
+  weeklyLearningGoal: string;
 }
 
 const todayDate = new Date(Date.now());
@@ -33,7 +34,8 @@ const initialState: PlanningWidgetState = {
   selectedWeek: WeekService.getWeekForDay(todayDate),
   selectedDay: todayDate,
   weeklyPlans: {},
-  error: null
+  error: null,
+  weeklyLearningGoal: ""
 };
 
 export const reducers: ActionReducerMap<State> = {

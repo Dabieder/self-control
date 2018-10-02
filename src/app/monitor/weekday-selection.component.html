@@ -1,11 +1,31 @@
-<button 
-mat-icon-button class="round-icon"
-(click)="selectPreviousDay()">
-  <mat-icon aria-label="Example icon-button with a heart icon">arrow_back_ios</mat-icon>
-</button>
-<span><b>{{selectedWeekDayDisplay}}</b></span>
-<button 
-mat-icon-button class="round-icon"
- (click)="selectNextDay()">
-  <mat-icon aria-label="Example icon-button with a heart icon">arrow_forward_ios</mat-icon>
-</button>
+<div class="row align-items-center justify-content-center">
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-primary weekday-button" (click)="daySelect(0)" [ngClass]="selectedDay === 0 ? 'focus active ' : ''">
+            <input type="radio" (click)="daySelect(0)" name=" options " id="option1 " autocomplete="off " (checked)="selectedDay===0 ">                Mon
+        </label>
+        <span class="btn-separator"></span>
+        <label class="btn btn-primary weekday-button" (click)="daySelect(1)" [ngClass]="selectedDay === 1 ? 'focus active ' : ''">
+            <input type="radio" (click)="daySelect(1)" name="options " id="option2 " autocomplete="off" (checked)="selectedDay===1">                Tue
+        </label>
+        <span class="btn-separator"></span>
+        <label class="btn btn-primary weekday-button" (click)="daySelect(2)" [ngClass]="selectedDay === 2 ? 'focus active ' : ''">
+            <input type="radio" (click)="daySelect(2)" name="options " id="option3 " autocomplete="off"> Wed
+        </label>
+        <span class="btn-separator"></span>
+        <label class="btn btn-primary weekday-button" (click)="daySelect(3)" [ngClass]="selectedDay === 3 ? 'focus active ' : ''">
+            <input type="radio" name="options " id="option3 " autocomplete="off"> Thu
+        </label>
+        <span class="btn-separator"></span>
+        <label class="btn btn-primary weekday-button" (click)="daySelect(4)" [ngClass]="selectedDay === 4 ? 'focus active ' : ''">
+            <input type="radio" name="options " id="option4" autocomplete="off"> Fri
+        </label>
+        <span class="btn-separator"></span>
+        <label class="btn btn-primary weekday-button" (click)="daySelect(5)" [ngClass]="selectedDay === 5 ? 'focus active ' : ''">
+            <input type="radio" name="options " id="option5" autocomplete="off"> Sat
+        </label>
+        <span class="btn-separator"></span>
+        <label class="btn btn-primary weekday-button" (click)="daySelect(6)" [ngClass]="selectedDay === 6 ? 'focus active ' : ''">
+            <input type="radio" name="options " id="option6" autocomplete="off"> Sun
+        </label>
+    </div>
+</div>
