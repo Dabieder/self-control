@@ -6,6 +6,7 @@ export class WeeklyPlan {
   public weekStartDate: Date;
   public plannedHours = 0;
   public dailyPlans: DailyPlan[] = [];
+  public learningGoal: string;
 
   static createForWeek(week: Date) {
     const plan = new WeeklyPlan();

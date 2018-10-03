@@ -1,6 +1,12 @@
-import { Component, OnInit, Input, AfterViewInit } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  AfterViewInit,
+  ViewChild
+} from "@angular/core";
 import { WeeklyPlans } from "../models/weekly-plan";
-import { Chart } from 'chart.js';
+import { Chart } from "chart.js";
 
 @Component({
   selector: "app-learning-goal-chart",
@@ -8,11 +14,12 @@ import { Chart } from 'chart.js';
   styleUrls: ["./learning-goal-chart.component.scss"]
 })
 export class LearningGoalChartComponent implements OnInit, AfterViewInit {
-
   @Input()
   weeklyPlans: WeeklyPlans;
 
-  chart = [];
+  @ViewChild("chartCanvas")
+  chartRef;
+  chart: any;
 
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
@@ -22,19 +29,21 @@ export class LearningGoalChartComponent implements OnInit, AfterViewInit {
     }
   };
   public barChartLabels: string[] = [
-    "24.09. - 30.09.",
-    "01.10. - 07.10.",
-    "08.10. - 14.10.",
-    "15.10. - 21.10.",
-    "22.10. - 28.10.",
-    "29.10. - 03.11."
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
   ];
   public barChartType = "bar";
   public barChartLegend = false;
 
-  public barChartData: any[] = [
-    { data: [65, 59, 80, 81, 100, 73], label: "Set Goals" },
-  ];
+  public barChartData = [65, 59, 80, 81, 100, 73, 0, 0, 0, 0];
 
   // events
   public chartClicked(e: any): void {
@@ -45,7 +54,7 @@ export class LearningGoalChartComponent implements OnInit, AfterViewInit {
     console.log(e);
   }
 
-  public fillFromWeeklyPlans(numWeeks: number) { }
+  public fillFromWeeklyPlans(numWeeks: number) {}
 
   public randomize(): void {
     // Only Change 3 values
@@ -69,36 +78,46 @@ export class LearningGoalChartComponent implements OnInit, AfterViewInit {
      */
   }
 
-  canvas: any;
-  ctx: any;
-
   ngAfterViewInit(): void {
-
-    // this.canvas = document.getElementById('canvas');
-    // this.ctx = this.canvas.getContext('2d');
-    // let myChart = new Chart(this.ctx, {
-    //   type: 'pie',
-    //   data: {
-    //     labels: ["New", "In Progress", "On Hold"],
-    //     datasets: [{
-    //       label: '# of Votes',
-    //       data: [1, 2, 3],
-    //       backgroundColor: [
-    //         'rgba(255, 99, 132, 1)',
-    //         'rgba(54, 162, 235, 1)',
-    //         'rgba(255, 206, 86, 1)'
-    //       ],
-    //       borderWidth: 1
-    //     }]
-    //   },
-    //   options: {
-    //     responsive: false
-    //   }
-    // });
-
+    // this.canvas = document.getElementById("canvas");
+    // this.ctx = this.canvas.getContext("2d");
+    const bgColors = this.getBackgroundColorsForValues(this.barChartData);
+    Chart.defaults.global.legend.display = false;
+    this.chart = new Chart(this.chartRef.nativeElement, {
+      type: "bar",
+      data: {
+        labels: this.barChartLabels,
+        datasets: [
+          {
+            data:  this.barChartData,
+            backgroundColor: bgColors,
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        responsive: false,
+        maintainAspectRatio: false
+      }
+    });
   }
 
-  ngOnInit() {
-
+  getBackgroundColorsForValues(values: number[]){
+    const colors = [];
+    for (const val of values){
+      colors.push(this.getColorBasedOnSuccess(val));
+    }
+    return colors;
   }
+
+  getColorBasedOnSuccess(val: number) {
+    const percentage = val / 100;
+
+    const red = 255 - (percentage * 255);
+    const green = (percentage * 255);
+
+    return "rgba(" + red + ", " + green + ", 0, 1)";
+  }
+
+  ngOnInit() {}
 }

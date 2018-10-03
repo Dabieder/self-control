@@ -1,14 +1,14 @@
 <div>
-  <!-- <div>
-    <canvas id="canvas">{{ chart }}</canvas>
-  </div> -->
+  <div>
+    <canvas id="chartCanvas" #chartCanvas>{{ chart }}</canvas>
+  </div>
 
-  <canvas baseChart
+  <!-- <canvas baseChart
             [datasets]="barChartData"
             [labels]="barChartLabels"
             [options]="barChartOptions"
             [legend]="barChartLegend"
             [chartType]="barChartType"
             (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            (chartClick)="chartClicked($event)"></canvas> -->
 </div>

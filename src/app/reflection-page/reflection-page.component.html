@@ -1,16 +1,19 @@
-<div style="margin-top: 10px">
+<div class="container pb-4">
   <!-- <app-track-activities></app-track-activities> -->
-  <div>
-    <div class="text-center">
-      <span>Your Self-Regulation Data</span>
-    </div>
-    <app-srl-chart></app-srl-chart>
-    <mat-divider style="margin-top: 10px; margin-bottom: 10px"></mat-divider>
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5>Your Self-Regulation Data</h5>
 
-    <div class="text-center">
-      <span>Your Weekly Plans</span>
+      <app-srl-chart></app-srl-chart>
     </div>
+  </div>
 
-    <app-learning-goal-chart></app-learning-goal-chart>
+  <mat-divider class="mt-4 mb-4"></mat-divider>
+
+  <div class="card">
+    <div class="card-body">
+      <h5>Overview of your weekly goal achievement:</h5>
+      <app-learning-goal-chart></app-learning-goal-chart>
+    </div>
   </div>
 </div>

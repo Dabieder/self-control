@@ -1,17 +1,25 @@
-<div class="container pt-4 ">
+<div class="container pt-4 pb-4">
 
-    <div class="container">
-        <div>
-            <p clas="text-center">Your goal for this week was:</p>
-        </div>
-        <div class="weekly-goal mt-4 mb-4">
+    <div class="card">
+        <div class="card-body">
+            <p clas="card-title">Your goal for this week:</p>
             <p class="lead text-center">Write two pages for the esssay.</p>
         </div>
     </div>
-    <app-rating-page [dailyPlan]="weeklyPlan.dailyPlans[selectedDay] "></app-rating-page>
-    <mat-divider class="mt-4 pt-4 pb-4"></mat-divider>
-    <app-reason [dailyPlan]="weeklyPlan.dailyPlans[selectedDay] "></app-reason>
+    <div class="card">
+        <div class="card-body">
+            <app-rating-page [dailyPlan]="weeklyPlan.dailyPlans[selectedDay] "></app-rating-page>
+        </div>
+    </div>
 
+
+    <mat-divider class="pt-2 pb-2"></mat-divider>
+
+    <div class="card">
+        <div class="card-body">
+            <app-reason [dailyPlan]="weeklyPlan.dailyPlans[selectedDay] "></app-reason>
+        </div>
+    </div>
 
     <!-- <button class="btn-block fixed-bottom btn-primary " (click)="submitMonitor() " color="primary ">Submit</button> -->
 </div>
