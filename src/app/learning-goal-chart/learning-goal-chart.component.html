@@ -1,6 +1,9 @@
 <div>
-  <div style="display: block">
-    <canvas baseChart
+  <!-- <div>
+    <canvas id="canvas">{{ chart }}</canvas>
+  </div> -->
+
+  <canvas baseChart
             [datasets]="barChartData"
             [labels]="barChartLabels"
             [options]="barChartOptions"
@@ -8,5 +11,4 @@
             [chartType]="barChartType"
             (chartHover)="chartHovered($event)"
             (chartClick)="chartClicked($event)"></canvas>
-  </div>
 </div>

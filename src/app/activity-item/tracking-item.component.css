@@ -2,22 +2,13 @@
     display:block;
     border: 1px solid #aaaaaa;
     border-radius: 50%;
-    width: 3em;
-    height: 3em;
-    margin: 0 auto !important;
-}
-
-.activity-button{
     width: 5em;
-}
-
-.icon-button{
-
+    height: 5em;
+    margin: 0 auto !important;
 }
 
 .activity-label{
     text-align: center;
-    font-size: 0.7em;
 }
 
 .activities {

@@ -1,8 +1,15 @@
 <div class="container pt-4 ">
 
-
+    <div class="container">
+        <div>
+            <p clas="text-center">Your goal for this week was:</p>
+        </div>
+        <div class="weekly-goal mt-4 mb-4">
+            <p class="lead text-center">Write two pages for the esssay.</p>
+        </div>
+    </div>
     <app-rating-page [dailyPlan]="weeklyPlan.dailyPlans[selectedDay] "></app-rating-page>
-    <mat-divider class="pt-4 pb-4"></mat-divider>
+    <mat-divider class="mt-4 pt-4 pb-4"></mat-divider>
     <app-reason [dailyPlan]="weeklyPlan.dailyPlans[selectedDay] "></app-reason>
 
 
