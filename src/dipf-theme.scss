@@ -1,0 +1,5 @@
+$dipf-primary: mat-palette($mat-light-blue, 800, 300, 900);
+$dipf-accent: mat-palette($mat-orange);
+$dipf-warn: mat-palette($mat-pink, 600);
+
+$dipf-theme: mat-light-theme($dipf-primary, $dipf-accent, $dipf-warn);

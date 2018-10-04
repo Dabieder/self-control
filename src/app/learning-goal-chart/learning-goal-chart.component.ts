@@ -111,12 +111,13 @@ export class LearningGoalChartComponent implements OnInit, AfterViewInit {
   }
 
   getColorBasedOnSuccess(val: number) {
-    const percentage = val / 100;
+    const percentage = Math.max(0.5, val / 100);
 
     const red = 255 - (percentage * 255);
-    const green = (percentage * 255);
+    const green = 153;
+    const blue = (percentage * 255);
 
-    return "rgba(" + red + ", " + green + ", 0, 1)";
+    return "rgba(" + red + ", " + green + ", " + blue + ", 1)";
   }
 
   ngOnInit() {}

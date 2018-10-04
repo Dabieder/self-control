@@ -4,7 +4,7 @@ import { TrackingItem } from "../models/tracking-item";
 @Component({
   selector: "app-tracking-item",
   templateUrl: "./tracking-item.component.html",
-  styleUrls: ["./tracking-item.component.css"]
+  styleUrls: ["./tracking-item.component.scss"]
 })
 export class TrackingItemComponent implements OnInit {
   @Input() trackingItem: TrackingItem;

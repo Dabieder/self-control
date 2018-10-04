@@ -1,0 +1,16 @@
+.day-grid {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  align-items: center;
+}
+
+.weekly-hours-input {
+  width: 3em;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.learning-goal {
+  font-size: 1.5em;
+  text-align: center;
+}

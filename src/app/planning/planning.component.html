@@ -1,19 +1,22 @@
-<div class="container pt-4" *ngIf="weeklyPlan$ | async as plan">
+<div class="container pt-4 pb-2" *ngIf="weeklyPlan$ | async as plan">
 
-  <div class="row align-items-center justify-content-center">
+  <div class="card">
+    <div class="card-body row align-items-center justify-content-center">
+      <mat-form-field>
+        <textarea 
+        class="learning-goal"
+        matInput placeholder="My learning goal for this week is..." [(ngModel)]="plan.learningGoal"></textarea>
+      </mat-form-field>
+    </div>
 
-    <mat-form-field>
-      <textarea matInput placeholder="My learning goal for this week is..."
-      [(ngModel)]="plan.learningGoal"></textarea>
-    </mat-form-field>
   </div>
-
-  <div class="col-md-8 offset-md-2 pt-4">
+  <mat-divider class="pt-1 pb-1"></mat-divider>
+  <div class="col-md-8 offset-md-2 pt-4 card">
     <div class="descriptive-header mb-4 text-center">
       How much time do you want to invest <b>each day</b>?
     </div>
 
-    <div class="container mt-4">
+    <div class="container mt-2">
       <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Mon" [dailyPlan]="plan.dailyPlans[0]"></app-weekday>
       <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Tue" [dailyPlan]="plan.dailyPlans[1]"></app-weekday>
       <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Wed" [dailyPlan]="plan.dailyPlans[2]"></app-weekday>
@@ -23,17 +26,21 @@
       <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Sun" [dailyPlan]="plan.dailyPlans[6]"></app-weekday>
     </div>
 
-  </div>
 
 
-  <div class="row align-items-center justify-content-center">
-    <div class="col-md-8 offset-md-2 descriptive-header text-center">
+
+
+    <!-- <div class="col-md-8 offset-md-2 descriptive-header text-center">
       How many hours do you want to invest <b>this week</b>?
+    </div> -->
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <b>Total:</b>
+        <mat-form-field class="weekly-hours-input">
+          <input type="tel" onClick="this.select();" [(ngModel)]="weeklyPlan.plannedHours" matInput>
+        </mat-form-field>
+      </div>
     </div>
-    <mat-form-field class="weekly-hours-input">
-      <input type="tel" onClick="this.select();" placeholder="..." [(ngModel)]="weeklyPlan.plannedHours" min="0" max="168"
-        matInput>
-    </mat-form-field>
   </div>
   <!-- <button mat-raised-button class="btn-block" (click)="submitPlan()" color="primary">Submit</button> -->
 

@@ -24,6 +24,7 @@
     "@angular/pwa": "^0.6.8",
     "@angular/router": "^6.0.3",
     "@angular/service-worker": "^6.0.3",
+    "@fortawesome/fontawesome-free": "^5.3.1",
     "@ngrx/effects": "^6.1.0",
     "@ngrx/entity": "^6.1.0",
     "@ngrx/store": "^6.1.0",
