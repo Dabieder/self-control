@@ -39,7 +39,7 @@ export class ReasonComponent implements OnInit, OnDestroy {
       },
       {
         name: "More time-consuming than expected",
-        icon: "settings_input_antenna",
+        icon: "schedule",
         selected: false
       },
       {
