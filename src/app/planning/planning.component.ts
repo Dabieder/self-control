@@ -3,9 +3,7 @@ import { Store, select } from "@ngrx/store";
 import { State, getCurrentWeeklyPlan, getWeeklyPlans } from "../reducers";
 import { takeUntil } from "rxjs/operators";
 import { WeeklyPlan, WeeklyPlans } from "../models/weekly-plan";
-import {
-  WeeklyPlansUpdatedAction
-} from "../services/app.actions";
+import { WeeklyPlansUpdatedAction } from "../services/app.actions";
 import { Subject } from "rxjs";
 import { WeekService } from "../services/week.service";
 
@@ -50,7 +48,12 @@ export class PlanningComponent implements OnInit, OnDestroy {
   onTimeValueChange(event: any) {
     console.log("time value change event", event);
     this.setTotalTimeValue();
-    this.updateWeeklyPlan();
+    this.submitPlan();
+  }
+
+  onLearningGoalChange(event: any) {
+    console.log("Learning Goal change: ", event);
+    this.submitPlan();
   }
 
   setTotalTimeValue() {
@@ -62,18 +65,18 @@ export class PlanningComponent implements OnInit, OnDestroy {
     console.log("planned hours: ", this.weeklyPlan.plannedHours);
   }
 
-  updateWeeklyPlan() {
-    // this.weeklyPlans[]
+  // updateWeeklyPlan() {
+  //   // this.weeklyPlans[]
 
-    this.store.dispatch(new WeeklyPlansUpdatedAction({ weeklyPlans: null }));
-  }
+  //   this.store.dispatch(new WeeklyPlansUpdatedAction({ weeklyPlans: null }));
+  // }
 
   submitPlan() {
     console.log("Submitting Plan");
     const weekKey = WeekService.toDictionaryKey(this.weeklyPlan.weekStartDate);
     this.weeklyPlans[weekKey] = this.weeklyPlan;
     this.store.dispatch(
-      new WeeklyPlansUpdatedAction({ weeklyPlans: this.weeklyPlans })
+      new WeeklyPlansUpdatedAction({ weeklyPlans: { ...this.weeklyPlans } })
     );
   }
 }

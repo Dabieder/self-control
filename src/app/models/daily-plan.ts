@@ -1,4 +1,6 @@
-export class DailyPlan {
+import { Plan } from "./plan";
+
+export class DailyPlan implements Plan {
   public date: Date;
   public plannedHours: number;
   public actualHours = 0;

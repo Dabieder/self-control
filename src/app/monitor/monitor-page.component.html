@@ -1,9 +1,9 @@
-<div class="container pt-4 pb-4">
+<div class="container pt-2 pb-2">
 
     <div class="card">
         <div class="card-body">
-            <p clas="card-title">Your goal for this week:</p>
-            <p class="lead text-center">Finish my Essay</p>
+            <p clas="card-title">Goal for this week:</p>
+            <p class="lead text-center">{{weeklyPlan.learningGoal}}</p>
         </div>
     </div>
 
@@ -11,7 +11,7 @@
 
     <div class="card">
         <div class="card-body">
-            <app-rating-page [dailyPlan]="weeklyPlan.dailyPlans[selectedDay] "></app-rating-page>
+            <app-rating-page [(value)]="weeklyPlan.actualHours"></app-rating-page>
         </div>
     </div>
 
@@ -20,7 +20,7 @@
 
     <div class="card">
         <div class="card-body">
-            <app-reason [dailyPlan]="weeklyPlan.dailyPlans[selectedDay] "></app-reason>
+            <app-reason [plan]="weeklyPlan"></app-reason>
         </div>
     </div>
 

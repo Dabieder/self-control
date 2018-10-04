@@ -1,29 +1,30 @@
-<div class="container pt-4 pb-2" *ngIf="weeklyPlan$ | async as plan">
+<div class="container pt-2 pb-2" *ngIf="weeklyPlan$ | async as plan">
 
   <div class="card">
     <div class="card-body row align-items-center justify-content-center">
       <mat-form-field>
         <textarea 
         class="learning-goal"
-        matInput placeholder="My learning goal for this week is..." [(ngModel)]="plan.learningGoal"></textarea>
+        (change)="onLearningGoalChange($event)"
+        matInput placeholder="My learning goal for this week is..." [(ngModel)]="weeklyPlan.learningGoal"></textarea>
       </mat-form-field>
     </div>
 
   </div>
   <mat-divider class="pt-1 pb-1"></mat-divider>
   <div class="col-md-8 offset-md-2 pt-4 card">
-    <div class="descriptive-header mb-4 text-center">
-      How much time do you want to invest <b>each day</b>?
+    <div class="descriptive-header mb-2 text-center">
+      Daily Time Investment
     </div>
 
     <div class="container mt-2">
-      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Mon" [dailyPlan]="plan.dailyPlans[0]"></app-weekday>
-      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Tue" [dailyPlan]="plan.dailyPlans[1]"></app-weekday>
-      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Wed" [dailyPlan]="plan.dailyPlans[2]"></app-weekday>
-      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Thu" [dailyPlan]="plan.dailyPlans[3]"></app-weekday>
-      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Fri" [dailyPlan]="plan.dailyPlans[4]"></app-weekday>
-      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Sat" [dailyPlan]="plan.dailyPlans[5]"></app-weekday>
-      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Sun" [dailyPlan]="plan.dailyPlans[6]"></app-weekday>
+      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Mon" [dailyPlan]="weeklyPlan.dailyPlans[0]"></app-weekday>
+      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Tue" [dailyPlan]="weeklyPlan.dailyPlans[1]"></app-weekday>
+      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Wed" [dailyPlan]="weeklyPlan.dailyPlans[2]"></app-weekday>
+      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Thu" [dailyPlan]="weeklyPlan.dailyPlans[3]"></app-weekday>
+      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Fri" [dailyPlan]="weeklyPlan.dailyPlans[4]"></app-weekday>
+      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Sat" [dailyPlan]="weeklyPlan.dailyPlans[5]"></app-weekday>
+      <app-weekday (timeValueChange)="onTimeValueChange($event)" name="Sun" [dailyPlan]="weeklyPlan.dailyPlans[6]"></app-weekday>
     </div>
 
 

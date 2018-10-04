@@ -30,11 +30,11 @@ body {
 }
 
 :root {
-  font-size: calc(1vw + 1vh + 0.5vmin);
+  // font-size: calc(1vw + 1vh + 0.5vmin);
 }
 
 .mat-slider-wide {
-  width: 80% !important;
+  width: 75% !important;
 }
 
 .mat-slider-thumb {
@@ -49,8 +49,8 @@ body {
 }
 
 .activity-button {
-  width: 11em;
-  height: 9em;
+  width: 8em;
+  height: 7em;
 }
 
 .mat-tab-label {

@@ -3,11 +3,11 @@
     How much of your learning goal did you reach?
   </p>
   <div class="row justify-content-center align-items-center">
-    <mat-slider class="mat-slider-wide" [(ngModel)]="dailyPlan.actualHours" (input)="onSliderValueChange($event)" min="1"
+    <mat-slider class="mat-slider-wide" [(ngModel)]="value" (input)="onSliderValueChange($event)" min="1"
       max="100"></mat-slider>
-    <h5 class="text-center pl-4">
-      {{dailyPlan.actualHours}} %
-    </h5>
+    <h6 class="text-center pl-2">
+      {{value}} %
+    </h6>
   </div>
   <div>
     <button class="btn btn-block btn-primary" data-toggle="button" (click)="overachieve()" color="primary">More

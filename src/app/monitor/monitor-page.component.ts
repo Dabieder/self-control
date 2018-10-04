@@ -25,7 +25,6 @@ export class MonitorPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.setCurrentDay();
-
     this.store
       .pipe(
         select(getCurrentWeeklyPlan),

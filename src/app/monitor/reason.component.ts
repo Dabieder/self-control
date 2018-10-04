@@ -7,6 +7,7 @@ import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import { WeeklyPlans } from "../models/weekly-plan";
 import { WeeklyPlanningService } from "../services/weekly-planning.service";
+import { Plan } from "../models/plan";
 
 @Component({
   selector: "app-reason",
@@ -18,8 +19,7 @@ export class ReasonComponent implements OnInit, OnDestroy {
   public reasonsPositive: any;
   public currentReasons: any;
   private unsubscribe$: Subject<void> = new Subject<void>();
-  @Input()
-  dailyPlan: DailyPlan;
+  @Input() plan: Plan;
   weeklyPlans: WeeklyPlans;
   week: string;
   day: number;
